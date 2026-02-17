@@ -1,12 +1,10 @@
 import React from 'react'
+import Nav from './section/Nav'
 
 const App = () => {
   return (
-    <main>App
-      <div color='white'>
-        <span color='white'>he</span>
-        hjajlkx
-      </div>
+    <main className='max-w-7xl mx-auto'>
+      <Nav />
     </main>
   )
 }
