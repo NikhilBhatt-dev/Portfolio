@@ -9,11 +9,13 @@ const HeroCamera = ({ children, ismobile }) => {
     // Smoothly move camera
     easing.damp3(state.camera.position, [0, 0, 20], 0.25, delta);
 
+
     // Only rotate if NOT mobile
     if (!ismobile && groupRef.current) {
       easing.dampE(
         groupRef.current.rotation,
        [-state.pointer.y / 5, -state.pointer.x / 8, 0],
+       
         0.25,
         delta
       );
