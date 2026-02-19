@@ -55,11 +55,12 @@ const Hero = () => {
              />
 
               <group>
-                 <Target position = {sizes.targetPosition}></Target>
+               
                  <ReactLogo position = {sizes.reactLogoPosition} />
                  <Cube  position = {sizes.cubePosition}/>
                  <Rings position= {sizes.ringPosition}/>
-                 
+                   <Target position = {sizes.ringPosition}></Target>
+
               </group>  
 
             <ambientLight intensity={1} />
