@@ -10,6 +10,9 @@ import Target from '../components/Target';
 import ReactLogo from '../components/ReactLogo';
 import Cube from '../components/cube';
 import Rings from '../components/Rings';
+import HeroCamera from '../components/HeroCamera';
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 
 
 
@@ -47,12 +50,14 @@ const Hero = () => {
           <Suspense fallback={<CanvasLoder />}>
          
           <PerspectiveCamera makeDefault position={[0,0,20]}  />
-
+            <HeroCamera ismobile={ismobile}>
             <HackerRoom 
             position={sizes.deskPosition} 
             scale={sizes.deskScale}
             rotation={[0,-Math.PI, 0 ]}
              />
+
+             </HeroCamera>
 
               <group>
                
