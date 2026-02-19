@@ -4,52 +4,58 @@ import { PerspectiveCamera } from '@react-three/drei';
 import HackerRoom from '../components/HackerRoom';
 import CanvasLoder from '../components/CanvasLoder';
 import {Leva, useControls} from 'leva';
+
 import { Controls } from 'three';
+import { useMediaQuery } from 'react-responsive';
+
 
 
 const Hero = () => {
 
   const x = useControls('HackerRoom',{
-    positionX: {
-      value : 2.5,
-      min : -10 ,
-      max: 10,
-    },
-     positionY: {
-      value : 2.5,
-      min : -10 ,
-      max: 10,
-    },
-     positionZ: {
-      value : 2.5,
-      min : -10 ,
-      max: 10,
-    },
-    rotationX: {
-      value : 2.5,
-      min : -10 ,
-      max: 10,
-    },
-     rotationY: {
-      value : 2.5,
-      min : -10 ,
-      max: 10,
-    },
-     rotationZ: {
-      value : 2.5,
-      min : -10 ,
-      max: 10,
-    },
-    scale : {
-      value : 1,
-      min :0.1,
-      max :10
-    }
+    // positionX: {
+    //   value : 2.5,
+    //   min : -10 ,
+    //   max: 10,
+    // },
+    //  positionY: {
+    //   value : 2.5,
+    //   min : -10 ,
+    //   max: 10,
+    // },
+    //  positionZ: {
+    //   value : 2.5,
+    //   min : -10 ,
+    //   max: 10,
+    // },
+    // rotationX: {
+    //   value : 2.5,
+    //   min : -10 ,
+    //   max: 10,
+    // },
+    //  rotationY: {
+    //   value : 2.5,
+    //   min : -10 ,
+    //   max: 10,
+    // },
+    //  rotationZ: {
+    //   value : 2.5,
+    //   min : -10 ,
+    //   max: 10,
+    // },
+    // scale : {
+    //   value : 1,
+    //   min :0.1,
+    //   max :10
+    // }
 
   })
+
+  const ismobile = useMediaQuery({maxWidth: 768})
+
   return (
     <section className='min-h-screen w-full flex flex-col relative'>
-        <Leva />
+       
       <div className='w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3'>
         <p className='sm:text-3xl text-2xl font-medium text-white text-center font-generalsans'>Hi, I am Nikhil Bhatt
           <span className='waving-hand'>👋</span>
@@ -61,7 +67,7 @@ const Hero = () => {
       {/* <div className='w-full h-full absolute inset-0'> */}
       <div className='w-full h-[650px] '>
 
-       {/* <Leva /> */}
+      
         <Canvas className='w-full h-full'>
           <Suspense fallback={<CanvasLoder />}>
          
@@ -71,9 +77,10 @@ const Hero = () => {
             // scale={0.07}
             // position={[0,0,0]}
             // rotation={[0,0,0]}
-            position={[x.positionX, x.positionY, x.positionZ]} 
-            rotation={[x.rotationX, x.rotationY, x.rotationZ]}
-            scale= {[x.scale, x.scale, x.scale]}
+            position={[0.5, 1.9, -2.9]} 
+            rotation={[0.7, 3.1, 0.1]}
+           scale={ismobile ? 0.07 : 0.1}
+
             />
   
 
