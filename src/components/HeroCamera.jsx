@@ -22,7 +22,7 @@ const HeroCamera = ({ children, ismobile }) => {
     }
   });
 
-  return <group ref={groupRef}>{children}</group>;
+  return <group ref={groupRef} scale={ismobile ? 1 : 1.2}>{children}</group>;
 };
 
 export default HeroCamera;

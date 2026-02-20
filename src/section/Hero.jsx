@@ -13,6 +13,7 @@ import Rings from '../components/Rings';
 import HeroCamera from '../components/HeroCamera';
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import Button from '../components/Button';
 
 
 
@@ -75,6 +76,12 @@ const Hero = () => {
 
         </Canvas>
 
+      </div>
+
+      <div className='absolute bottom-7 left-0 right-0 w-full z-10 c-space'>
+        <a href="#contact" className='w-fit'>
+          <Button />
+        </a>
       </div>
     </section>
   )
