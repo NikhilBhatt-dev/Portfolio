@@ -1,4 +1,5 @@
 import React from 'react'
+import Globe from 'react-globe.gl'
 
 const About = () => {
   return (
@@ -45,11 +46,37 @@ const About = () => {
         </div>
 
 
-        <div className='col-span-1 xl:row-span-4'>
+        {/* <div className='col-span-1 xl:row-span-4'>
             <div className='grid-container'>
-                <div  className='rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center  '></div>
+                <div  className='rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center'>
+                    <Globe 
+                    height={326}
+                    width={326}
+                    backgroundColor='rgba(0,0,0,0)'
+                    backgroudImageOpacity={0.5}
+                     showAtmosphere
+                     showGraticules
+                     globeimageUrl={}/>
+
+                </div>
             </div>
-        </div>
+        </div> */}
+        <div className='col-span-1 xl:row-span-4'>
+  <div className='grid-container'>
+    <div className='rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center'>
+      <Globe
+        height={326}
+        width={326}
+        backgroundColor="rgba(0,0,0,0)"
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+        showAtmosphere={true}
+        showGraticules={true}
+        
+      />
+    </div>
+  </div>
+</div>
 
       </div>
     </section>
