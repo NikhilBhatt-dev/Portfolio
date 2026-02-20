@@ -44,6 +44,13 @@ const About = () => {
           </div>
         </div>
 
+
+        <div className='col-span-1 xl:row-span-4'>
+            <div className='grid-container'>
+                <div  className='rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center  '></div>
+            </div>
+        </div>
+
       </div>
     </section>
   )
