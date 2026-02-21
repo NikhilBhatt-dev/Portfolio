@@ -17,7 +17,7 @@ const About = () => {
     }, 2000);
   }
   return (
-    <section className='c-space my-20'>
+    <section className='c-space my-20' id='about'>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 h-full'>
 
         <div className='lg:col-span-2'>

@@ -1,9 +1,10 @@
 import React, { Suspense, useState } from 'react'
 import { myProjects } from '../constants'
-import { Canvas } from `@react-three/fiber`
+import { Canvas } from '@react-three/fiber'
 import { Center, OrbitControls, Sphere } from '@react-three/drei'
 import DemoComputer from '../components/DemoComputer';
 
+import CanvasLoder from '../components/CanvasLoder'
 const projectsCount = myProjects.length;
 
 const Projects = () => {
@@ -112,8 +113,8 @@ const Projects = () => {
             <directionalLight position={[10, 10, 5]} />
             <Center>
 
-              <Suspense fallback={<CanvasLoder />}>
-                <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
+              <Suspense fallback={<CanvasLoder/>}>
+                <group scale={1.5} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
 
                   <DemoComputer />
 
