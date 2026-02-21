@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Globe from 'react-globe.gl'
 import Button from '../components/Button'
 
 const About = () => {
+  const [hasCopied, setHasCopied] = useState(false);
+
+  const handleCopy =  () =>{
+    navigator.clipboard.writeText('bhattnikhil158@gmail.com');
+
+    setHasCopied(true);
+    setTimeout( () => {
+      setHasCopied(false);
+    }, 2000);
+  }
   return (
     <section className='c-space my-20'>
-      <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 h-full'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 h-full'>
 
-        <div className='col-span-1 xl:row-span-3'>
+        <div className='lg:col-span-2'>
           <div className='grid-container'>
             <img
               src="/assets/grid1.png"
@@ -29,7 +39,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className='col-span-1 xl:row-span-3'>
+        <div className='lg:col-span-2'>
           <div className="grid-container">
             <img
               src="/assets/grid2.png"
@@ -47,8 +57,7 @@ const About = () => {
         </div>
 
 
-        
-        <div className='col-span-1 xl:row-span-3'>
+        <div className='lg:col-span-2 lg:row-span-2 flex flex-col gap-5'>
           <div className='grid-container'>
             <div className='rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center'>
               <Globe
@@ -71,7 +80,36 @@ const About = () => {
               </p>
               <Button name='Contact Me' isBeam containerClass='w-full mt-10' />
             </div>
+          </div>
+          <div className='grid-container justify-between lg:h-[290px]'>
+            <img src="/assets/grid4.png" alt="grid-4" className='w-full h-[160px] object-contain' />
 
+            <div className='space-y-3'>
+              <p className='grid-subtext text-center'>
+                Contact me
+              </p>
+
+              <div className='copy-container justify-center' onClick={handleCopy}>
+              <img src={hasCopied ? '/assets/tick.svg': '/assets/copy.svg'} alt="copy" />
+                <p className='lg:text-xl md:text-xl font-medium text-gray_gradient text-white text-center break-all'>bhattnikhil158@gmail.com</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div className='lg:col-span-4'>
+          <div className='grid-container'>
+            <img src="/assets/grid3.png" alt="grid3" className='w-full sm:h-[266px] h-fit object-contain' />
+            <div>
+              <p className='grid-headtext'>My Passion for coding</p>
+              <p className='grid-subtext'>
+                I have a deep passion for coding and constantly strive to
+                improve my skills and knowledge in the field.
+              </p>
+
+            </div>
           </div>
         </div>
 
@@ -81,3 +119,4 @@ const About = () => {
 }
 
 export default About
+
