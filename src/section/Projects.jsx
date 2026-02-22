@@ -40,13 +40,13 @@ const Projects = () => {
           </div>
 
           <div
-            className='p-3 backdrop-filter backdrop-blur-3xl w-fit rounded-lg'
+            className='p-3 backdrop-filter backdrop-blur-3xl w-16 h-16 rounded-lg flex items-center justify-center'
             style={currentProject.logoStyle}
           >
             <img
               src={currentProject.logo}
               alt="logo"
-              className='w-10 h-10 shadow-sm'
+              className='w-full h-full object-contain shadow-sm'
             />
           </div>
 

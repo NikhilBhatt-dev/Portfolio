@@ -57,193 +57,201 @@ export const clientReviews = [
 ];
 
 export const myProjects = [
+ 
   {
-    title: 'Podcastr - AI Podcast Platform',
-    desc: 'Podcastr is a revolutionary Software-as-a-Service platform that transforms the way podcasts are created. With advanced AI-powered features like text-to-multiple-voices functionality, it allows creators to generate diverse voiceovers from a single text input.',
-    subdesc:
-      'Built as a unique Software-as-a-Service app with Next.js 14, Tailwind CSS, TypeScript, Framer Motion and Convex, Podcastr is designed for optimal performance and scalability.',
-    href: 'https://www.youtube.com/watch?v=zfAb95tJvZQ',
-    texture: '/textures/project/project1.mp4',
-    logo: '/assets/project-logo1.png',
-    logoStyle: {
-      backgroundColor: '#2A1816',
-      border: '0.2px solid #36201D',
-      boxShadow: '0px 0px 60px 0px #AA3C304D',
-    },
-    spotlight: '/assets/spotlight1.png',
-    tags: [
-      {
-        id: 1,
-        name: 'React.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
-      },
-    ],
+  title: 'NASA Space Biology Engine',
+  desc: 'NASA Space Biology Engine is an advanced scientific simulation platform that models human physiology, ecosystem stability, and mission environments in deep space scenarios. It integrates real-time adaptive simulations, anomaly detection, and an integrity ledger into a unified interactive 3D research environment.',
+  subdesc:
+    'Built as a unified monorepo using React + Vite with TypeScript, the platform combines modular simulation engines (physiology, ecosystems, mission generation, anomaly detection, security ledger, and replay systems) with immersive UI dashboards and 3D visualization labs. Designed with a scalable architecture, framework-agnostic engines, and extensible scenario modeling for ISS, Mars transit, and solar storm simulations.',
+  href: 'https://comforting-tiramisu-76c084.netlify.app/',
+  texture: '/textures/project/nasa-space-biology.mp4',
+  logo: '/assets/project-logo-nasa.png',
+  logoStyle: {
+    backgroundColor: '#0A0F1F',
+    border: '0.2px solid #1F2A44',
+    boxShadow: '0px 0px 60px 0px #1E90FF4D',
   },
+  spotlight: "/assets/spotlight2.png",
+  tags: [
+    {
+      id: 1,
+      name: 'React.js',
+      path: '/assets/react.svg',
+    },
+    {
+      id: 2,
+      name: 'TailwindCSS',
+      path: '/assets/tailwindcss.png',
+    },
+    {
+      id: 3,
+      name: 'TypeScript',
+      path: '/assets/typescript.png',
+    },
+    {
+      id: 4,
+      name: 'Framer Motion',
+      path: '/assets/framer.png',
+    }
+   
+    
+  ],
+},
+
+
+
   {
-    title: 'LiveDoc - Real-Time Google Docs Clone',
-    desc: 'LiveDoc is a powerful collaborative app that elevates the capabilities of real-time document editing. As an enhanced version of Google Docs, It supports millions of collaborators simultaneously, ensuring that every change is captured instantly and accurately.',
-    subdesc:
-      'With LiveDoc, users can experience the future of collaboration, where multiple contributors work together in real time without any lag, by using Next.js and Liveblocks newest features.',
-    href: 'https://www.youtube.com/watch?v=y5vE8y_f_OM',
-    texture: '/textures/project/project2.mp4',
-    logo: '/assets/project-logo2.png',
-    logoStyle: {
-      backgroundColor: '#13202F',
-      border: '0.2px solid #17293E',
-      boxShadow: '0px 0px 60px 0px #2F6DB54D',
-    },
-    spotlight: '/assets/spotlight2.png',
-    tags: [
-      {
-        id: 1,
-        name: 'React.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
-      },
-    ],
+  title: 'Music School Hindi – Modern Learning Platform',
+  desc: 'Music School Hindi is a modern, interactive web platform designed to showcase structured music education programs. It features smooth animations, responsive layouts, and an elegant UI to present courses, instructors, and enrollment flows in a clean and engaging format.',
+  subdesc:
+    'Built with Next.js 14 and TypeScript, the platform leverages Tailwind CSS for scalable styling and Framer Motion for fluid animations. Optimized for performance and SEO using Next.js App Router architecture, it delivers a fast, production-ready user experience.',
+  href: 'https://music-school-hindi-8d9qa2hd9-nikhil-bhatts-projects-216f008f.vercel.app/',
+  texture: '/textures/project/music-school.mp4',
+  logo: '/assets/project-logo-music.png',
+  logoStyle: {
+    backgroundColor: '#1A0F2E',
+    border: '0.2px solid #2E1A47',
+    boxShadow: '0px 0px 60px 0px #8B5CF64D',
   },
-  {
-    title: 'CarePulse - Health Management System',
-    desc: 'An innovative healthcare platform designed to streamline essential medical processes. It simplifies patient registration, appointment scheduling, and medical record management, providing a seamless experience for both healthcare providers and patients.',
-    subdesc:
-      'With a focus on efficiency, CarePulse integrantes complex forms and SMS notifications, by using Next.js, Appwrite, Twillio and Sentry that enhance operational workflows.',
-    href: 'https://www.youtube.com/watch?v=lEflo_sc82g',
-    texture: '/textures/project/project3.mp4',
-    logo: '/assets/project-logo3.png',
-    logoStyle: {
-      backgroundColor: '#60f5a1',
-      background:
-        'linear-gradient(0deg, #60F5A150, #60F5A150), linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(208, 213, 221, 0.8) 100%)',
-      border: '0.2px solid rgba(208, 213, 221, 1)',
-      boxShadow: '0px 0px 60px 0px rgba(35, 131, 96, 0.3)',
+  spotlight: '/assets/spotlight2.png',
+  tags: [
+    {
+      id: 1,
+      name: 'Next.js 14',
+      path: '/assets/nextjs.png',
     },
-    spotlight: '/assets/spotlight3.png',
-    tags: [
-      {
-        id: 1,
-        name: 'React.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
-      },
-    ],
-  },
-  {
-    title: 'Horizon - Online Banking Platform',
-    desc: 'Horizon is a comprehensive online banking platform that offers users a centralized finance management dashboard. It allows users to connect multiple bank accounts, monitor real-time transactions, and seamlessly transfer money to other users.',
-    subdesc:
-      'Built with Next.js 14 Appwrite, Dwolla and Plaid, Horizon ensures a smooth and secure banking experience, tailored to meet the needs of modern consumers.',
-    href: 'https://www.youtube.com/watch?v=PuOVqP_cjkE',
-    texture: '/textures/project/project4.mp4',
-    logo: '/assets/project-logo4.png',
-    logoStyle: {
-      backgroundColor: '#0E1F38',
-      border: '0.2px solid #0E2D58',
-      boxShadow: '0px 0px 60px 0px #2F67B64D',
+    {
+      id: 2,
+      name: 'React 18',
+      path: '/assets/react.svg',
     },
-    spotlight: '/assets/spotlight4.png',
-    tags: [
-      {
-        id: 1,
-        name: 'React.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
-      },
-    ],
-  },
-  {
-    title: 'Imaginify - AI Photo Manipulation App',
-    desc: 'Imaginify is a groundbreaking Software-as-a-Service application that empowers users to create stunning photo manipulations using AI technology. With features like AI-driven image editing, a payments system, and a credits-based model.',
-    subdesc:
-      'Built with Next.js 14, Cloudinary AI, Clerk, and Stripe, Imaginify combines cutting-edge technology with a user-centric approach. It can be turned into a side income or even a full-fledged business.',
-    href: 'https://www.youtube.com/watch?v=Ahwoks_dawU',
-    texture: '/textures/project/project5.mp4',
-    logo: '/assets/project-logo5.png',
-    logoStyle: {
-      backgroundColor: '#1C1A43',
-      border: '0.2px solid #252262',
-      boxShadow: '0px 0px 60px 0px #635BFF4D',
+    {
+      id: 3,
+      name: 'TypeScript',
+      path: '/assets/typescript.png',
     },
-    spotlight: '/assets/spotlight5.png',
-    tags: [
-      {
-        id: 1,
-        name: 'React.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
-      },
-    ],
+    {
+      id: 4,
+      name: 'Tailwind CSS',
+      path: '/assets/tailwindcss.png',
+    },
+    {
+      id: 5,
+      name: 'Framer Motion',
+      path: '/assets/framer.png',
+    },
+  ],
+},
+
+{
+  title: 'Classic Snake Game – JavaScript Edition',
+  desc: 'A fully functional classic Snake Game built using Vanilla JavaScript, featuring dynamic movement, food consumption mechanics, score tracking, high-score persistence using LocalStorage, and a real-time game loop system.',
+  subdesc:
+    'Developed using HTML, CSS, and core JavaScript concepts, this project demonstrates DOM manipulation, array-based state management, collision detection, interval-driven game loops, and browser storage integration. Designed with modular game logic and responsive UI elements including Game Over modal and restart functionality.',
+  href: 'https://glowing-licorice-665ec7.netlify.app/',
+  texture: '/textures/project/snake-game.mp4',
+  logo: '/assets/project-logo-snake.png',
+  logoStyle: {
+    backgroundColor: '#0F172A',
+    border: '0.2px solid #1E293B',
+    boxShadow: '0px 0px 60px 0px #22C55E4D',
   },
+  spotlight: '/assets/spotlight2.png',
+  tags: [
+    {
+      id: 1,
+      name: 'HTML5',
+      path: '/assets/html.png',
+    },
+    {
+      id: 2,
+      name: 'CSS3',
+      path: '/assets/css.png',
+    },
+    {
+      id: 3,
+      name: 'JavaScript',
+      path: '/assets/js.png',
+    },
+    
+    
+  ],
+},
+
+  // {
+  //   title: "Horizon - Online Banking Platform",
+  //   desc: "Horizon is a comprehensive online banking platform that offers users a centralized finance management dashboard. It allows users to connect multiple bank accounts, monitor real-time transactions, and seamlessly transfer money to other users.",
+  //   subdesc:
+  //     "Built with Next.js 14 Appwrite, Dwolla and Plaid, Horizon ensures a smooth and secure banking experience, tailored to meet the needs of modern consumers.",
+  //   href: "https://www.youtube.com/watch?v=PuOVqP_cjkE",
+  //   texture: "/textures/project/project4.mp4",
+  //   logo: "/assets/project-logo4.png",
+  //   logoStyle: {
+  //     backgroundColor: "#0E1F38",
+  //     border: "0.2px solid #0E2D58",
+  //     boxShadow: "0px 0px 60px 0px #2F67B64D",
+  //   },
+  //   spotlight: "/assets/spotlight4.png",
+  //   tags: [
+  //     {
+  //       id: 1,
+  //       name: "React.js",
+  //       path: "/assets/react.svg",
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "TailwindCSS",
+  //       path: "assets/tailwindcss.png",
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "TypeScript",
+  //       path: "/assets/typescript.png",
+  //     },
+  //     {
+  //       id: 4,
+  //       name: "Framer Motion",
+  //       path: "/assets/framer.png",
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Imaginify - AI Photo Manipulation App",
+  //   desc: "Imaginify is a groundbreaking Software-as-a-Service application that empowers users to create stunning photo manipulations using AI technology. With features like AI-driven image editing, a payments system, and a credits-based model.",
+  //   subdesc:
+  //     "Built with Next.js 14, Cloudinary AI, Clerk, and Stripe, Imaginify combines cutting-edge technology with a user-centric approach. It can be turned into a side income or even a full-fledged business.",
+  //   href: "https://www.youtube.com/watch?v=Ahwoks_dawU",
+  //   texture: "/textures/project/project5.mp4",
+  //   logo: "/assets/project-logo5.png",
+  //   logoStyle: {
+  //     backgroundColor: "#1C1A43",
+  //     border: "0.2px solid #252262",
+  //     boxShadow: "0px 0px 60px 0px #635BFF4D",
+  //   },
+  //   spotlight: "/assets/spotlight5.png",
+  //   tags: [
+  //     {
+  //       id: 1,
+  //       name: "React.js",
+  //       path: "/assets/react.svg",
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "TailwindCSS",
+  //       path: "assets/tailwindcss.png",
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "TypeScript",
+  //       path: "/assets/typescript.png",
+  //     },
+  //     {
+  //       id: 4,
+  //       name: "Framer Motion",
+  //       path: "/assets/framer.png",
+  //     },
+  //   ],
+  // },
 ];
 
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
