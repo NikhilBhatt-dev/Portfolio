@@ -78,9 +78,9 @@ const Hero = () => {
 
       </div>
 
-      <div className='absolute bottom-[-8px] left-0 right-0 w-full z-10 c-space'>
-        <a href="#about" className='w-fit'>
-          <Button name='lets work together' isBeam containerClass='sm:w-fit w-full sm:min-w-96'/>
+      <div className='absolute bottom-[-8px] left-0 right-0 w-full z-10 c-space flex justify-center'>
+        <a href="#about" className='block w-full sm:w-fit'>
+          <Button name='lets work together' isBeam containerClass='w-full max-w-full px-4 text-sm sm:w-auto sm:min-w-[18rem] sm:px-6 sm:text-base md:min-w-[20rem] md:px-7 lg:min-w-[22rem] lg:px-8 lg:text-lg xl:min-w-[24rem]'/>
         </a>
       </div>
     </section>
@@ -88,5 +88,9 @@ const Hero = () => {
 }
 
 export default Hero
+
+
+
+
 
 
