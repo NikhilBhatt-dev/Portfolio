@@ -43,11 +43,11 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
+const TARGET_MODEL_URL = 'https://threejs.org/examples/models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf';
+
 const Target = (props) => {
   const targetRef = useRef();
-  const { scene } = useGLTF(
-    'https://threejs.org/examples/models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf',
-  );
+  const { scene } = useGLTF(TARGET_MODEL_URL);
 
   useGSAP(() => {
     gsap.to(targetRef.current.position, {
@@ -64,6 +64,8 @@ const Target = (props) => {
     </mesh>
   );
 };
+
+useGLTF.preload(TARGET_MODEL_URL);
 
 export default Target;
 

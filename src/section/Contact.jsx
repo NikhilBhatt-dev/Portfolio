@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 const Contact = () => {
     const formRef = useRef();
 
-    // const { alert, showAlert, hideAlert } = useAlert();
+    
     const [loading, setLoading] = useState(false);
 
     const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -49,20 +49,24 @@ const Contact = () => {
         }
     };
     return (
-        <section className="c-space my-20" id="contact">
+        <section className="c-space my-12 md:my-20" id="contact">
             {alert.show && <Alert {...alert} />}
 
-            <div className="relative min-h-screen flex items-center justify-center flex-col">
-                <img src="/assets/terminal.png" alt="terminal-bg" className="absolute inset-0 min-h-screen" />
+            <div className="relative flex min-h-[85vh] md:min-h-screen items-center justify-center overflow-hidden">
+                <img
+                    src="/assets/terminal.png"
+                    alt="terminal-bg"
+                    className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
+                />
 
                 <div className="contact-container">
-                    <h3 className="head-text">Let's talk</h3>
-                    <p className="text-lg text-white-600 mt-3">
+                    <h3 className="head-text text-center sm:text-left">Let's talk</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white-600 sm:text-base md:text-lg">
                         Whether you’re looking to build a new website, improve your existing platform, or bring a unique project to
                         life, I’m here to help.
                     </p>
 
-                    <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
+                    <form ref={formRef} onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5 md:mt-12 md:gap-7">
                         <label className="space-y-3">
                             <span className="field-label">Full Name</span>
                             <input

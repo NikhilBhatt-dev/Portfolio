@@ -11,14 +11,14 @@ const Rings = ({ position }) => {
     }
   }, []);
 
-  const texture = useTexture('textures/rings.png');
+  const texture = useTexture('/textures/rings.png');
 
   useGSAP(
     () => {
       if (refList.current.length === 0) return;
 
       const startPosition = [Math.abs(position[0]), position[1], position[2]];
-      const centerPosition = [0, 0, position[2]];
+      const bottomLeftPosition = [position[0], position[1] - 21, position[2]];
 
       refList.current.forEach((r) => {
         r.position.set(startPosition[0], startPosition[1], startPosition[2]);
@@ -38,14 +38,24 @@ const Rings = ({ position }) => {
           ease: 'power2.out',
         })
         .to(refList.current.map((r) => r.position), {
-          x: centerPosition[0],
-          y: centerPosition[1],
-          z: centerPosition[2],
+          x: bottomLeftPosition[0],
+          y: bottomLeftPosition[1],
+          z: bottomLeftPosition[2],
           duration: 1.2,
           stagger: {
             each: 0.08,
           },
           ease: 'power2.inOut',
+        })
+        .to(refList.current.map((r) => r.position), {
+          y: '+=0.6',
+          duration: 1.2,
+          repeat: -1,
+          yoyo: true,
+          stagger: {
+            each: 0.08,
+          },
+          ease: 'sine.inOut',
         })
         .to(
           refList.current.map((r) => r.rotation),
@@ -59,6 +69,7 @@ const Rings = ({ position }) => {
               each: 0.15,
             },
           },
+          '<',
         );
 
       return () => {
@@ -83,5 +94,7 @@ const Rings = ({ position }) => {
     </Center>
   );
 };
+
+useTexture.preload('/textures/rings.png');
 
 export default Rings;

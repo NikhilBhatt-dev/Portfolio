@@ -4,13 +4,10 @@ Command: npx gltfjsx@6.5.0 hacker-room-new.glb -T
 Files: hacker-room-new.glb [34.62MB] > /Users/hsuwinlat/Desktop/jsm pj/threejscc-portfolio/public/models/hacker-room-new-transformed.glb [2.56MB] (93%)
 */
 
-import { useGLTF, useTexture } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 
 const HackerRoom = (props) => {
   const { nodes, materials } = useGLTF('/models/hacker-room.glb');
-
-  
-  const screenTxt = useTexture('textures/desk/screen.png');
 
   return (
     <group {...props} dispose={null}>
