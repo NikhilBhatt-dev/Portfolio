@@ -9,6 +9,7 @@ const Footer = () => {
 
             <div className="flex gap-3">
                 <div className="social-icon">
+                    <a href="https://github.com/NikhilBhatt-dev" />
                     <img src="/assets/github.svg" alt="github" className="w-1/2 h-1/2" />
                 </div>
                 <div className="social-icon">
@@ -19,7 +20,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <p className="text-white-500">© 2024 Adrian Hajdin. All rights reserved.</p>
+            <p className="text-white-500">© 2026 Nikhil Bhatt. All rights reserved.</p>
         </footer>
     );
 };
