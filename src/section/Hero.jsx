@@ -1,18 +1,15 @@
 import React, { Suspense } from 'react'
 import {Canvas} from '@react-three/fiber';
-import { PerspectiveCamera, Ring } from '@react-three/drei';
+import { PerspectiveCamera } from '@react-three/drei';
 import HackerRoom from '../components/HackerRoom';
 import CanvasLoder from '../components/CanvasLoder';
 
 import { useMediaQuery } from 'react-responsive';
 import { calculateSizes } from '../constants';
-import Target from '../components/Target';
 import ReactLogo from '../components/ReactLogo';
 import Cube from '../components/Cube';
 import Rings from '../components/Rings';
 import HeroCamera from '../components/HeroCamera';
-import { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
 import Button from '../components/Button';
 
 
@@ -31,19 +28,19 @@ const Hero = () => {
   const sizes =  calculateSizes(isSmall, ismobile, isTablet)
 
   return (
-    <section className='min-h-screen w-full flex flex-col relative'>
+    <section className='relative flex min-h-screen w-full flex-col overflow-x-clip' id='home'>
        
-      <div className='w-full mx-auto flex flex-col sm:mt-35 mt-20 c-space gap-3'>
-      
+      <div className='mx-auto mt-24 flex w-full flex-col gap-3 c-space sm:mt-32 lg:mt-36'>
+       
 
-        <p className='sm:text-3xl text-2xl font-medium text-white text-center font-generalsans ml-7'>Hi, I am Nikhil Bhatt
+        <p className='px-2 text-center font-generalsans text-2xl font-medium text-white sm:text-3xl'>Hi, I am Nikhil Bhatt
           <span className='waving-hand'>👋</span>
         </p>
 
         <p className="hero_tag text-gray_gradient">Full Stack Web Developer</p>
       </div>
 
-      <div className='w-full h-full absolute inset-10'>
+      <div className='absolute inset-0 h-full w-full sm:inset-6 lg:inset-10'>
       {/* <div className='w-full h-[650px]  '> */}
 
         
@@ -78,9 +75,9 @@ const Hero = () => {
 
       </div>
 
-      <div className='absolute bottom-[-8px] left-0 right-0 w-full z-10 c-space flex justify-center'>
-        <a href="#about" className='block w-full sm:w-fit'>
-          <Button name='lets work together' isBeam containerClass='w-full max-w-full px-4 text-sm sm:w-auto sm:min-w-[18rem] sm:px-6 sm:text-base md:min-w-[20rem] md:px-7 lg:min-w-[22rem] lg:px-8 lg:text-lg xl:min-w-[24rem]'/>
+      <div className='absolute bottom-4 left-0 right-0 z-10 flex w-full justify-center c-space sm:bottom-2 lg:bottom-[-8px]'>
+        <a href="#about" className='block w-full sm:w-auto'>
+          <Button name='lets work together' isBeam containerClass='w-full max-w-sm px-4 text-sm sm:w-auto sm:min-w-[18rem] sm:px-6 sm:text-base md:min-w-[20rem] md:px-7 lg:min-w-[22rem] lg:px-8 lg:text-lg xl:min-w-[24rem]'/>
         </a>
       </div>
     </section>

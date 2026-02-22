@@ -49,10 +49,8 @@ const Contact = () => {
         }
     };
     return (
-        <section className="c-space my-12 md:my-20" id="contact">
-            {alert.show && <Alert {...alert} />}
-
-            <div className="relative flex min-h-[85vh] md:min-h-screen items-center justify-center overflow-hidden">
+        <section className="c-space my-12 md:my-16 lg:my-20" id="contact">
+            <div className="relative flex min-h-[70vh] items-center justify-center overflow-hidden sm:min-h-[80vh] md:min-h-screen">
                 <img
                     src="/assets/terminal.png"
                     alt="terminal-bg"
@@ -66,7 +64,7 @@ const Contact = () => {
                         life, I’m here to help.
                     </p>
 
-                    <form ref={formRef} onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5 md:mt-12 md:gap-7">
+                    <form ref={formRef} onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5 sm:mt-10 md:mt-12 md:gap-7">
                         <label className="space-y-3">
                             <span className="field-label">Full Name</span>
                             <input

@@ -19,7 +19,7 @@ body {
   }
 
   .head-text {
-    @apply sm:text-4xl text-3xl font-semibold text-gray_gradient;
+    @apply text-3xl font-semibold text-gray_gradient sm:text-4xl lg:text-5xl;
   }
 
   .nav-ul {
@@ -31,7 +31,7 @@ body {
   }
 
   .nav-li_a {
-    @apply text-lg md:text-base hover:text-white transition-colors;
+    @apply text-base transition-colors hover:text-white sm:text-lg;
   }
 
   .nav-sidebar {
@@ -44,7 +44,7 @@ body {
 
   /* button component */
   .btn {
-    @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-black-300 transition-all active:scale-95 text-white mx-auto;
+    @apply mx-auto flex items-center justify-center gap-3 rounded-md bg-black-300 px-4 py-3 text-sm text-white transition-all active:scale-95 sm:gap-4 sm:text-base;
   }
 
   .btn-ping {
@@ -70,7 +70,7 @@ body {
   }
 
   .grid-subtext {
-    @apply text-[#afb0b6] text-base font-generalsans;
+    @apply font-generalsans text-sm text-[#afb0b6] sm:text-base;
   }
 
   .copy-container {

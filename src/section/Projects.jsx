@@ -1,8 +1,9 @@
 import React, { Suspense, useState } from 'react'
 import { myProjects } from '../constants'
 import { Canvas } from '@react-three/fiber'
-import { Center, OrbitControls, Sphere } from '@react-three/drei'
+import { Center, OrbitControls } from '@react-three/drei'
 import DemoComputer from '../components/DemoComputer';
+import { useMediaQuery } from 'react-responsive';
 
 import CanvasLoder from '../components/CanvasLoder'
 const projectsCount = myProjects.length;
@@ -10,6 +11,8 @@ const projectsCount = myProjects.length;
 const Projects = () => {
 
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
 
   const currentProject = myProjects[selectedProjectIndex];
 
@@ -24,18 +27,18 @@ const Projects = () => {
   }
 
   return (
-    <section className='c-space my-20'>
+    <section className='c-space my-14 sm:my-20' id='work'>
       <p className='head-text'>My Work</p>
 
-      <div className='grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full'>
+      <div className='mt-12 grid w-full grid-cols-1 gap-5 lg:grid-cols-2'>
 
-        <div className='flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl'>
+        <div className='relative flex flex-col gap-5 px-5 py-8 shadow-2xl sm:p-10'>
 
           <div className='absolute top-0 right-0'>
             <img
               src={currentProject.spotlight}
               alt='spotlight'
-              className='w-full h-96 object-cover rounded-xl'
+              className='h-56 w-full rounded-xl object-cover sm:h-80 lg:h-96'
             />
           </div>
 
@@ -50,8 +53,8 @@ const Projects = () => {
             />
           </div>
 
-          <div className='flex flex-col gap-5 text-white-600 my-5'>
-            <p className='text-white text-2xl font-semibold animatedText'>
+          <div className='my-5 flex flex-col gap-5 text-white-600'>
+            <p className='animatedText text-xl font-semibold text-white sm:text-2xl'>
               {currentProject.title}
             </p>
 
@@ -64,8 +67,8 @@ const Projects = () => {
             </p>
           </div>
 
-          <div className='flex items-center justify-between flex-wrap gap-5'>
-            <div className='flex items-center gap-3'>
+          <div className='flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between'>
+            <div className='flex flex-wrap items-center gap-3'>
               {currentProject.tags.map((tag, index) => (
                 <div key={index} className='tech-logo'>
                   <img src={tag.path} alt={tag.name} />
@@ -74,7 +77,7 @@ const Projects = () => {
             </div>
 
             <a
-              className='flex items-center gap-2 cursor-pointer text-white-600'
+              className='flex w-full items-center justify-end gap-2 text-white-600 sm:w-auto'
               href={currentProject.href}
               target='_blank'
               rel='noreferrer'
@@ -106,7 +109,7 @@ const Projects = () => {
 
 
 
-        <div className='border border-black-300 bg-black-200 rounded-lg h-96 md:h-full'>
+        <div className='h-[320px] rounded-lg border border-black-300 bg-black-200 sm:h-96 md:h-[460px] lg:h-full'>
 
           <Canvas>
             <ambientLight intensity={Math.PI / 2} />
@@ -114,7 +117,7 @@ const Projects = () => {
             <Center>
 
               <Suspense fallback={<CanvasLoder/>}>
-                <group scale={1.5} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
+                <group scale={isMobile ? 1.15 : isTablet ? 1.3 : 2.0} position={[0, isMobile ? -4 : -3, 0]} rotation={[0, -0.1, 0]}>
 
                   <DemoComputer />
 

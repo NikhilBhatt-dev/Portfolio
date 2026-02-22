@@ -8,7 +8,7 @@ import Footer from './section/Footer'
 
 const App = () => {
   return (
-    <main className='max-w-7xl mx-auto'>
+    <main className='mx-auto w-full max-w-7xl overflow-x-hidden'>
       <Nav />
       <Hero />
       <About />

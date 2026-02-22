@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 
 import Globe from 'react-globe.gl'
 import Button from '../components/Button'
+import { useMediaQuery } from 'react-responsive'
 
 const About = () => {
  
+  const isSmall = useMediaQuery({ maxWidth: 640 });
+  const isTablet = useMediaQuery({ minWidth: 641, maxWidth: 1024 });
+  const globeSize = isSmall ? 240 : isTablet ? 300 : 326;
 
   const [hasCopied, setHasCopied] = useState(false);
 
@@ -17,15 +21,15 @@ const About = () => {
     }, 2000);
   }
   return (
-    <section className='c-space my-20' id='about'>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 h-full'>
+    <section className='c-space my-14 sm:my-20' id='about'>
+      <div className='grid h-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6 lg:gap-6'>
 
         <div className='lg:col-span-2'>
           <div className='grid-container'>
             <img
               src="/assets/grid1.png"
               alt="grid-1"
-              className='w-full sm:h-[276px] h-fit object-contain'
+              className='h-fit w-full object-contain sm:h-[276px]'
             />
 
             <div>
@@ -47,7 +51,7 @@ const About = () => {
             <img
               src="/assets/grid2.png"
               alt="grid2"
-              className='w-full sm:w-[276px] h-fit object-contain'
+              className='mx-auto h-fit w-full object-contain sm:w-[276px]'
             />
 
             <div>
@@ -62,10 +66,10 @@ const About = () => {
 
         <div className='lg:col-span-2 lg:row-span-2 flex flex-col gap-5'>
           <div className='grid-container'>
-            <div className='rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center'>
+            <div className='flex w-full items-center justify-center rounded-3xl' style={{ minHeight: globeSize }}>
               <Globe
-                height={326}
-                width={326}
+                height={globeSize}
+                width={globeSize}
                 backgroundColor="rgba(0,0,0,0)"
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
                 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
@@ -81,11 +85,11 @@ const About = () => {
               <p className='grid-subtext'>
                 I'm based in India, with remote work available
               </p>
-              <Button name='Contact Me' isBeam containerClass='w-full mt-10' />
+              <Button name='Contact Me' isBeam containerClass='mt-8 w-full sm:mt-10 sm:w-fit sm:min-w-56' />
             </div>
           </div>
           <div className='grid-container justify-between lg:h-[290px]'>
-            <img src="/assets/grid4.png" alt="grid-4" className='w-full h-[160px] object-contain' />
+            <img src="/assets/grid4.png" alt="grid-4" className='h-[140px] w-full object-contain sm:h-[160px]' />
 
             <div className='space-y-3'>
               <p className='grid-subtext text-center'>
@@ -94,7 +98,7 @@ const About = () => {
 
               <div className='copy-container justify-center' onClick={handleCopy}>
               <img src={hasCopied ? '/assets/tick.svg': '/assets/copy.svg'} alt="copy" />
-                <p className='lg:text-xl md:text-xl font-medium text-gray_gradient text-white text-center break-all'>bhattnikhil158@gmail.com</p>
+                <p className='text-center text-sm font-medium text-gray_gradient text-white break-all sm:text-base lg:text-xl'>bhattnikhil158@gmail.com</p>
 
               </div>
             </div>
@@ -104,7 +108,7 @@ const About = () => {
 
         <div className='lg:col-span-4'>
           <div className='grid-container'>
-            <img src="/assets/grid3.png" alt="grid3" className='w-full sm:h-[266px] h-fit object-contain' />
+            <img src="/assets/grid3.png" alt="grid3" className='h-fit w-full object-contain sm:h-[266px]' />
             <div>
               <p className='grid-headtext'>My Passion for coding</p>
               <p className='grid-subtext'>
