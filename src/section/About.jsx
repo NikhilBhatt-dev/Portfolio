@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Globe from 'react-globe.gl'
 import Button from '../components/Button'
 import { useMediaQuery } from 'react-responsive'
+import GlobeErrorBoundary from '../components/GlobeErrorBoundary'
 
 const About = () => {
  
@@ -67,16 +68,23 @@ const About = () => {
         <div className='lg:col-span-2 lg:row-span-2 flex flex-col gap-5'>
           <div className='grid-container'>
             <div className='flex w-full items-center justify-center rounded-3xl' style={{ minHeight: globeSize }}>
-              <Globe
-                height={globeSize}
-                width={globeSize}
-                backgroundColor="rgba(0,0,0,0)"
-                globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-                bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-                showAtmosphere={true}
-                showGraticules={true}
-
-              />
+              <GlobeErrorBoundary
+                fallback={
+                  <div className='flex h-full w-full items-center justify-center text-sm text-white-600'>
+                    3D globe unavailable
+                  </div>
+                }
+              >
+                <Globe
+                  height={globeSize}
+                  width={globeSize}
+                  backgroundColor="rgba(0,0,0,0)"
+                  globeImageUrl="https://unpkg.com/three-globe/example/img/earth-night.jpg"
+                  bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
+                  showAtmosphere={true}
+                  showGraticules={true}
+                />
+              </GlobeErrorBoundary>
             </div>
             <div>
               <p className='grid-headtext'>

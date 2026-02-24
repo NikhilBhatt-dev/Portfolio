@@ -1,18 +1,17 @@
+import { Leva } from 'leva'; 
 import React, { Suspense } from 'react'
+
 import {Canvas} from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
 import HackerRoom from '../components/HackerRoom';
-import CanvasLoder from '../components/CanvasLoder';
+import CanvasLoader from '../components/CanvasLoader';
 
 import { useMediaQuery } from 'react-responsive';
 import { calculateSizes } from '../constants';
-import ReactLogo from '../components/ReactLogo';
 import Cube from '../components/Cube';
 import Rings from '../components/Rings';
 import HeroCamera from '../components/HeroCamera';
 import Button from '../components/Button';
-
-
 
 
 const Hero = () => {
@@ -29,9 +28,9 @@ const Hero = () => {
 
   return (
     <section className='relative flex min-h-screen w-full flex-col overflow-x-clip' id='home'>
-       
+
       <div className='mx-auto mt-24 flex w-full flex-col gap-3 c-space sm:mt-32 lg:mt-36'>
-       
+
 
         <p className='px-2 text-center font-generalsans text-2xl font-medium text-white sm:text-3xl'>Hi, I am Nikhil Bhatt
           <span className='waving-hand'>👋</span>
@@ -40,17 +39,16 @@ const Hero = () => {
         <p className="hero_tag text-gray_gradient">Full Stack Web Developer</p>
       </div>
 
-      <div className='absolute inset-0 h-full w-full sm:inset-6 lg:inset-10'>
-      {/* <div className='w-full h-[650px]  '> */}
+      <div className='absolute inset-0 h-full w-full sm:inset-6 lg:inset-10 mt-6'>
 
-        
-        <Canvas className='w-full h-full'>
-          <Suspense fallback={<CanvasLoder />}>
-         
+
+          <Canvas className='w-full h-full'>
+          <Suspense fallback={<CanvasLoader />}>
+
           <PerspectiveCamera makeDefault position={[0,0,20]}  />
             <HeroCamera ismobile={ismobile}>
-            <HackerRoom 
-            position={sizes.deskPosition} 
+            <HackerRoom
+            position={sizes.deskPosition}
             scale={sizes.deskScale}
             rotation={[0,-Math.PI, 0 ]}
              />
@@ -58,17 +56,17 @@ const Hero = () => {
              </HeroCamera>
 
               <group>
-               
-                 <ReactLogo position = {sizes.reactLogoPosition} />
+
+                 {/* <ReactLogo position = {sizes.reactLogoPosition} /> */}
                  <Cube  position = {sizes.cubePosition}/>
                  <Rings position= {sizes.ringPosition}/>
-                   {/* <Target position = {sizes.ringPositionPosition}></Target> */}
 
-              </group>  
+
+              </group>
 
             <ambientLight intensity={1} />
-            <directionalLight position={[10,10,10]} 
-            intensity={0.5} /> 
+            <directionalLight position={[10,10,10]}
+            intensity={0.5} />
             </Suspense>
 
         </Canvas>
@@ -85,6 +83,10 @@ const Hero = () => {
 }
 
 export default Hero
+
+
+
+
 
 
 

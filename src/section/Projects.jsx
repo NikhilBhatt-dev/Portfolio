@@ -5,7 +5,7 @@ import { Center, OrbitControls } from '@react-three/drei'
 import DemoComputer from '../components/DemoComputer';
 import { useMediaQuery } from 'react-responsive';
 
-import CanvasLoder from '../components/CanvasLoder'
+import CanvasLoader from '../components/CanvasLoader'
 const projectsCount = myProjects.length;
 
 const Projects = () => {
@@ -116,7 +116,7 @@ const Projects = () => {
             <directionalLight position={[10, 10, 5]} />
             <Center>
 
-              <Suspense fallback={<CanvasLoder/>}>
+              <Suspense fallback={<CanvasLoader/>}>
                 <group scale={isMobile ? 1.15 : isTablet ? 1.3 : 2.0} position={[0, isMobile ? -4 : -3, 0]} rotation={[0, -0.1, 0]}>
 
                   <DemoComputer />
@@ -137,3 +137,4 @@ const Projects = () => {
 }
 
 export default Projects
+

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Html } from '@react-three/drei'
 
-const  CanvasLoder = () => {
+const  CanvasLoader = () => {
   return (
     <Html
         as="div"
-        center
+         center
         style={{
             display:' flex',
             justifyContent: 'center',
@@ -21,4 +21,5 @@ const  CanvasLoder = () => {
   )
 }
 
-export default CanvasLoder
+export default CanvasLoader
+
