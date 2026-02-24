@@ -50,7 +50,9 @@ const About = () => {
         <div className='lg:col-span-2'>
           <div className="grid-container">
             <img
-              src="/assets/grid2.png"
+              src="/assets/techstacks.png"
+              
+             
               alt="grid2"
               className='mx-auto h-fit w-full object-contain sm:w-[276px]'
             />
