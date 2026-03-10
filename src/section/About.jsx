@@ -41,10 +41,10 @@ const About = () => {
 
 
 
+  
+
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/submarine-cables.json"
-    )
+    fetch("https://unpkg.com/globe.gl/example/datasets/submarine-cables.json")
       .then(res => res.json())
       .then(data => setCables(data));
   }, []);
