@@ -22,7 +22,7 @@ const Contact = () => {
                     <h3 className="head-text">Let's talk</h3>
 
                     <form
-                        action="https://formsubmit.co/bhattnikhil158@gmail.com"
+                        action="https://formsubmit.co/6c1ae2dfdbb4d118510f1b0a5b39c298"
                         method="POST"
                         className="mt-12 flex flex-col space-y-7"
                     >
