@@ -87,11 +87,7 @@ export const myProjects = [
         name: "TypeScript",
         path: "/assets/typescript.png",
       },
-      {
-        id: 4,
-        name: "Framer Motion",
-        path: "/assets/framer.png",
-      },
+      
     ],
   },
 
@@ -113,28 +109,20 @@ export const myProjects = [
       {
         id: 1,
         name: "Next.js 14",
-        path: "/assets/nextjs.png",
+        path: "/assets/typescript.png",
       },
       {
         id: 2,
         name: "React 18",
         path: "/assets/react.svg",
       },
-      {
-        id: 3,
-        name: "TypeScript",
-        path: "/assets/typescript.png",
-      },
+     
       {
         id: 4,
         name: "Tailwind CSS",
         path: "/assets/tailwindcss.png",
       },
-      {
-        id: 5,
-        name: "Framer Motion",
-        path: "/assets/framer.png",
-      },
+      
     ],
   },
 
@@ -166,7 +154,7 @@ export const myProjects = [
       {
         id: 3,
         name: "JavaScript",
-        path: "/assets/js.png",
+        path: "/assets/javascript.png",
       },
     ],
   },
