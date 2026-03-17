@@ -1,20 +1,13 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Globe from 'react-globe.gl'
 import Button from '../components/Button'
 import { useMediaQuery } from 'react-responsive'
 import GlobeErrorBoundary from '../components/GlobeErrorBoundary'
 
-const About = () => {
- 
-  const isSmall = useMediaQuery({ maxWidth: 640 });
-  const isTablet = useMediaQuery({ minWidth: 641, maxWidth: 1024 });
-  const globeSize = isSmall ? 240 : isTablet ? 300 : 326;
-
-  const [hasCopied, setHasCopied] = useState(false);
-
-  const cables = Array.from({ length: 50 }).map(() => ({
+const createFallbackCables = () =>
+  Array.from({ length: 50 }, () => ({
     coords: [
       {
         lat: (Math.random() - 0.5) * 180,
@@ -27,6 +20,15 @@ const About = () => {
     ]
   }));
 
+const About = () => {
+ 
+  const isSmall = useMediaQuery({ maxWidth: 640 });
+  const isTablet = useMediaQuery({ minWidth: 641, maxWidth: 1024 });
+  const globeSize = isSmall ? 240 : isTablet ? 300 : 326;
+
+  const [hasCopied, setHasCopied] = useState(false);
+  const [cables] = useState(createFallbackCables);
+
 
 
   const handleCopy =  () =>{
@@ -37,17 +39,6 @@ const About = () => {
       setHasCopied(false);
     }, 2000);
   }
-
-
-
-
-  
-
-  useEffect(() => {
-    fetch("https://unpkg.com/globe.gl/example/datasets/submarine-cables.json")
-      .then(res => res.json())
-      .then(data => setCables(data));
-  }, []);
 
   return (
     <section className='c-space my-14 sm:my-20' id='about'>
