@@ -98,6 +98,10 @@ body {
     @apply w-full h-full max-w-[72%] max-h-[72%] object-contain shadow-sm;
   }
 
+  .project-logo-image.logo-fit-full {
+    @apply max-w-full max-h-full;
+  }
+
   .project-details-card {
     min-height: 100%;
   }

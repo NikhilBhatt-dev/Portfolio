@@ -35,7 +35,8 @@ export const myProjects = [
   
   logo: "/assets/logo.png",
   logoStyle: {
-    backgroundColor: "#0F172A",
+    backgroundColor: "white",
+  
     border: "0.2px solid #1E293B",
     boxShadow: "0px 0px 60px 0px #38BDF84D",
   },

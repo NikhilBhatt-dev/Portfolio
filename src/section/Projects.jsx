@@ -40,6 +40,7 @@ const Projects = () => {
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
 
   const currentProject = myProjects[selectedProjectIndex];
+  const isEcommerceProject = currentProject.title?.toLowerCase().includes('ecommerce');
 
   useEffect(() => {
     setIsSpotlightLoaded(false);
@@ -84,7 +85,8 @@ const Projects = () => {
             <img
               src={currentProject.logo}
               alt="logo"
-              className='project-logo-image'
+              className={`project-logo-image ${currentProject.logoClassName || ''} ${isEcommerceProject ? 'logo-fit-full' : ''}`.trim()}
+              style={currentProject.logoImageStyle}
             />
           </div>
 
