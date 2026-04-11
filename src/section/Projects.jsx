@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { myProjects } from '../constants'
 import { Canvas } from '@react-three/fiber'
 import { Center, OrbitControls } from '@react-three/drei'
@@ -8,13 +8,42 @@ import { useMediaQuery } from 'react-responsive';
 import CanvasLoader from '../components/CanvasLoader'
 const projectsCount = myProjects.length;
 
+const SkeletonBlock = ({ className = '' }) => (
+  <div className={`skeleton-shimmer rounded-xl ${className}`.trim()} aria-hidden='true' />
+);
+
+const ProjectCanvasSkeleton = () => (
+  <div className='project-canvas-skeleton' aria-hidden='true'>
+    <SkeletonBlock className='h-4 w-28 rounded-full' />
+    <SkeletonBlock className='h-36 w-36 rounded-[2rem] sm:h-44 sm:w-44' />
+    <div className='flex w-full max-w-xs justify-between gap-3'>
+      <SkeletonBlock className='h-3 flex-1 rounded-full' />
+      <SkeletonBlock className='h-3 w-16 rounded-full' />
+    </div>
+  </div>
+);
+
+const ModelReadyTracker = ({ onReady }) => {
+  useEffect(() => {
+    onReady();
+  }, [onReady]);
+
+  return null;
+};
+
 const Projects = () => {
 
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const [isSpotlightLoaded, setIsSpotlightLoaded] = useState(false);
+  const [isModelReady, setIsModelReady] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
 
   const currentProject = myProjects[selectedProjectIndex];
+
+  useEffect(() => {
+    setIsSpotlightLoaded(false);
+  }, [selectedProjectIndex]);
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
@@ -35,21 +64,27 @@ const Projects = () => {
         <div className='relative flex flex-col gap-5 px-5 py-8 shadow-2xl sm:p-10'>
 
           <div className='absolute top-0 right-0'>
+            {!isSpotlightLoaded && (
+              <div className='project-spotlight-skeleton'>
+                <SkeletonBlock className='h-full w-full rounded-xl' />
+              </div>
+            )}
             <img
               src={currentProject.spotlight}
               alt='spotlight'
-              className='h-56 w-full rounded-xl object-cover sm:h-80 lg:h-96'
+              className={`h-56 w-full rounded-xl object-cover transition-opacity duration-500 sm:h-80 lg:h-96 ${isSpotlightLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => setIsSpotlightLoaded(true)}
             />
           </div>
 
           <div
-            className='p-3 backdrop-filter backdrop-blur-3xl w-16 h-16 rounded-lg flex items-center justify-center'
+            className='project-logo-box'
             style={currentProject.logoStyle}
           >
             <img
               src={currentProject.logo}
               alt="logo"
-              className='w-full h-full object-contain shadow-sm'
+              className='project-logo-image'
             />
           </div>
 
@@ -109,7 +144,8 @@ const Projects = () => {
 
 
 
-        <div className='h-[320px] rounded-lg border border-black-300 bg-black-200 sm:h-96 md:h-[460px] lg:h-full'>
+        <div className='project-canvas-shell h-[320px] rounded-lg border border-black-300 bg-black-200 sm:h-96 md:h-[460px] lg:h-full'>
+          {!isModelReady && <ProjectCanvasSkeleton />}
 
           <Canvas>
             <ambientLight intensity={Math.PI / 2} />
@@ -120,6 +156,7 @@ const Projects = () => {
                 <group scale={isMobile ? 1.15 : isTablet ? 1.3 : 2.0} position={[0, isMobile ? -4 : -3, 0]} rotation={[0, -0.1, 0]}>
 
                   <DemoComputer />
+                  <ModelReadyTracker onReady={() => setIsModelReady(true)} />
 
 
                 </group>

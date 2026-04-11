@@ -83,11 +83,31 @@ body {
   }
 
   .tech-logo {
-    @apply w-10 h-10 rounded-md p-2 bg-neutral-100 bg-opacity-10 backdrop-filter backdrop-blur-lg flex justify-center items-center;
+    @apply w-10 h-10 rounded-md p-2 bg-neutral-100 bg-opacity-10 backdrop-filter backdrop-blur-lg flex justify-center items-center shrink-0;
   }
 
   .tech-logo img {
-    @apply w-full h-full object-contain;
+    @apply w-full h-full max-w-[70%] max-h-[70%] object-contain;
+  }
+
+  .project-logo-box {
+    @apply w-16 h-16 rounded-lg flex items-center justify-center p-3 backdrop-filter backdrop-blur-3xl shrink-0;
+  }
+
+  .project-logo-image {
+    @apply w-full h-full max-w-[72%] max-h-[72%] object-contain shadow-sm;
+  }
+
+  .project-canvas-shell {
+    @apply relative overflow-hidden;
+  }
+
+  .project-canvas-skeleton {
+    @apply absolute inset-0 z-10 flex flex-col items-center justify-center gap-5 bg-black-200/95 px-6;
+  }
+
+  .project-spotlight-skeleton {
+    @apply absolute inset-0 z-10 h-56 w-full rounded-xl sm:h-80 lg:h-96;
   }
 
   /* clients section */
@@ -171,6 +191,14 @@ body {
       rgba(255, 255, 255, 0.025) 100%);
 }
 
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.16) 45%, rgba(255, 255, 255, 0.08) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-wave 1.6s linear infinite;
+}
+
 @keyframes wave-animation {
   0% {
     transform: rotate(0deg);
@@ -202,5 +230,15 @@ body {
 
   100% {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes skeleton-wave {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
   }
 }

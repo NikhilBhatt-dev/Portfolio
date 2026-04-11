@@ -25,6 +25,51 @@ export const navLinks = [
 
 export const myProjects = [
   {
+    title: "E-Commerce Store – Full Stack Shopping Platform",
+    desc: "A modern e-commerce web application designed to deliver a seamless online shopping experience. It includes product browsing, cart functionality, secure checkout, and order management with a clean and responsive UI.",
+    subdesc:
+      "Built with React for the frontend and Node.js with Express for the backend, the platform uses MongoDB for data storage. Integrated with  Stripe for secure payments, and Cloudinary for optimized media handling. Designed with scalability, performance, and real-world production use in mind.",
+    href: "https://e-com-frontend-mu-mauve.vercel.app/",
+    texture: "/textures/project/ecommerce.mp4",
+    logo: "/assets/logo.png",
+    logoStyle: {
+      backgroundColor: "#0F172A",
+      border: "0.2px solid #1E293B",
+      boxShadow: "0px 0px 60px 0px #38BDF84D",
+    },
+    spotlight: "/assets/spotlight2.png",
+    tags: [
+      {
+        id: 1,
+        name: "React",
+        path: "/assets/react.svg",
+      },
+
+      {
+        id: 3,
+        name: "Node.js",
+        path: "/assets/nodejs.png",
+      },
+      {
+        id: 4,
+        name: "MongoDB",
+        path: "/assets/mongodb.png",
+      },
+      {
+        id: 5,
+        name: "Tailwind CSS",
+        path: "/assets/tailwindcss.png",
+      },
+
+      {
+        id: 6,
+        name: "Stripe",
+        path: "/assets/stripe.png",
+      },
+    ],
+  },
+
+  {
     title: "NASA Space Biology Engine",
     desc: "NASA Space Biology Engine is an advanced scientific simulation platform that models human physiology, ecosystem stability, and mission environments in deep space scenarios. It integrates real-time adaptive simulations, anomaly detection, and an integrity ledger into a unified interactive 3D research environment.",
     subdesc:
@@ -37,24 +82,18 @@ export const myProjects = [
       border: "0.2px solid #1F2A44",
       boxShadow: "0px 0px 60px 0px #1E90FF4D",
     },
-    spotlight: "/assets/spotlight2.png",
+    spotlight: "/assets/spotlight1.png",
     tags: [
       {
         id: 1,
-        name: "React.js",
-        path: "/assets/react.svg",
+        name: "TypeScript",
+        path: "/assets/typescript.png",
       },
       {
         id: 2,
         name: "TailwindCSS",
         path: "/assets/tailwindcss.png",
       },
-      {
-        id: 3,
-        name: "TypeScript",
-        path: "/assets/typescript.png",
-      },
-      
     ],
   },
 
@@ -83,13 +122,12 @@ export const myProjects = [
         name: "React 18",
         path: "/assets/react.svg",
       },
-     
+
       {
         id: 4,
         name: "Tailwind CSS",
         path: "/assets/tailwindcss.png",
       },
-      
     ],
   },
 
@@ -106,7 +144,7 @@ export const myProjects = [
       border: "0.2px solid #1E293B",
       boxShadow: "0px 0px 60px 0px #22C55E4D",
     },
-    spotlight: "/assets/spotlight2.png",
+    spotlight: "/assets/spotlight3.png",
     tags: [
       {
         id: 1,
