@@ -1,10 +1,20 @@
+import React, { Suspense, lazy, useState } from "react";
 
-import { useState } from "react";
-
-import Globe from 'react-globe.gl'
 import Button from '../components/Button'
 import { useMediaQuery } from 'react-responsive'
 import GlobeErrorBoundary from '../components/GlobeErrorBoundary'
+
+const Globe = lazy(() => import('react-globe.gl'));
+
+const GlobeFallback = ({ globeSize }) => (
+  <div
+    className='flex items-center justify-center'
+    style={{ width: globeSize, height: globeSize }}
+    aria-hidden='true'
+  >
+    <div className='skeleton-shimmer h-full w-full rounded-full' />
+  </div>
+);
 
 const createFallbackCables = () =>
   Array.from({ length: 50 }, () => ({
@@ -98,31 +108,33 @@ const About = () => {
               >
                 
 
-                <Globe
-                  height={globeSize}
-                  width={globeSize}
-                  backgroundColor="rgba(0,0,0,0)"
-                  // globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-                  bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-                  backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+                <Suspense fallback={<GlobeFallback globeSize={globeSize} />}>
+                  <Globe
+                    height={globeSize}
+                    width={globeSize}
+                    backgroundColor="rgba(0,0,0,0)"
+                    // globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+                    bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+                    backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
 
-                  globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
-                  
+                    globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+                    
 
-                  showAtmosphere={true}
+                    showAtmosphere={true}
 
-                  pathsData={cables}
-                  pathPoints="coords"
-                  pathPointLat="lat"
-                  pathPointLng="lng"
+                    pathsData={cables}
+                    pathPoints="coords"
+                    pathPointLat="lat"
+                    pathPointLng="lng"
 
-                  pathColor={() => ["#ff0080", "#00ffff", "#00ff00", "#ffaa00"][Math.floor(Math.random() * 4)]}
+                    pathColor={() => ["#ff0080", "#00ffff", "#00ff00", "#ffaa00"][Math.floor(Math.random() * 4)]}
 
-                  pathStroke={0.4}
-                  pathDashLength={0.5}
-                  pathDashGap={0.1}
-                  pathDashAnimateTime={4000}
-                />
+                    pathStroke={0.4}
+                    pathDashLength={0.5}
+                    pathDashGap={0.1}
+                    pathDashAnimateTime={4000}
+                  />
+                </Suspense>
 
 
               </GlobeErrorBoundary>

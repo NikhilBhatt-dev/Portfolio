@@ -1,12 +1,12 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import { myProjects } from '../constants'
 import { Canvas } from '@react-three/fiber'
 import { Center, OrbitControls } from '@react-three/drei'
-import DemoComputer from '../components/DemoComputer';
 import { useMediaQuery } from 'react-responsive';
 
 import CanvasLoader from '../components/CanvasLoader'
 const projectsCount = myProjects.length;
+const DemoComputer = lazy(() => import('../components/DemoComputer'));
 
 const SkeletonBlock = ({ className = '' }) => (
   <div className={`skeleton-shimmer rounded-xl ${className}`.trim()} aria-hidden='true' />
@@ -61,7 +61,7 @@ const Projects = () => {
 
       <div className='mt-12 grid w-full grid-cols-1 gap-5 lg:grid-cols-2'>
 
-        <div className='relative flex flex-col gap-5 px-5 py-8 shadow-2xl sm:p-10'>
+        <div className='project-details-card relative flex flex-col gap-5 px-5 py-8 shadow-2xl sm:p-10'>
 
           <div className='absolute top-0 right-0'>
             {!isSpotlightLoaded && (
@@ -88,7 +88,7 @@ const Projects = () => {
             />
           </div>
 
-          <div className='my-5 flex flex-col gap-5 text-white-600'>
+          <div className='project-copy-block my-5 flex flex-col gap-5 text-white-600'>
             <p className='animatedText text-xl font-semibold text-white sm:text-2xl'>
               {currentProject.title}
             </p>
@@ -102,7 +102,7 @@ const Projects = () => {
             </p>
           </div>
 
-          <div className='flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between'>
+          <div className='mt-auto flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between'>
             <div className='flex flex-wrap items-center gap-3'>
               {currentProject.tags.map((tag, index) => (
                 <div key={index} className='tech-logo'>

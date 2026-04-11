@@ -98,8 +98,38 @@ body {
     @apply w-full h-full max-w-[72%] max-h-[72%] object-contain shadow-sm;
   }
 
+  .project-details-card {
+    min-height: 100%;
+  }
+
+  .project-copy-block {
+    min-height: 16rem;
+  }
+
+  @media (min-width: 640px) {
+    .project-copy-block {
+      min-height: 18rem;
+    }
+  }
+
   .project-canvas-shell {
     @apply relative overflow-hidden;
+  }
+
+  .page-skeleton {
+    @apply c-space flex flex-col gap-5;
+  }
+
+  .nav-skeleton {
+    @apply sticky top-0 z-40 mx-5 mt-3 h-16 rounded-2xl sm:mx-10 sm:mt-4;
+  }
+
+  .footer-skeleton {
+    @apply h-24 rounded-2xl;
+  }
+
+  .hero-canvas-fallback {
+    @apply flex h-full w-full items-center justify-center;
   }
 
   .project-canvas-skeleton {
