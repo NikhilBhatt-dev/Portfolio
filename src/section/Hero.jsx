@@ -27,12 +27,12 @@ const Hero = () => {
   const isTablet = useMediaQuery({minWidth: 768, maxWidth: 1024})
 
 
-  const sizes =  calculateSizes(isSmall, ismobile, isTablet)
+  calculateSizes(isSmall, ismobile, isTablet)
 
   return (
-    <section className='relative flex min-h-screen w-full flex-col overflow-x-clip' id='home'>
+    <section className='hero-section relative flex min-h-screen w-full flex-col overflow-x-clip' id='home'>
 
-      <div className='mx-auto mt-24 flex w-full flex-col gap-3 c-space sm:mt-32 lg:mt-36'>
+      <div className='hero-copy mx-auto mt-24 flex w-full flex-col gap-3 c-space sm:mt-32 lg:mt-36'>
 
 
         <p className='px-2 text-center font-generalsans text-2xl font-medium text-white sm:text-3xl'>Hi, I am Nikhil Bhatt
@@ -42,7 +42,7 @@ const Hero = () => {
         <p className="hero_tag text-gray_gradient">Full Stack Web Developer</p>
       </div>
 
-      <div className='absolute inset-0 h-full w-full sm:inset-6 lg:inset-10 mt-6'>
+      <div className='hero-canvas-wrap absolute inset-x-0 top-24 bottom-28 mt-6 w-full sm:inset-x-6 sm:top-28 sm:bottom-24 lg:inset-x-10 lg:top-32 lg:bottom-16'>
 
 
           <Suspense fallback={<HeroCanvasFallback />}>
@@ -90,7 +90,7 @@ const Hero = () => {
 
       </div>
 
-      <div className='absolute bottom-4 left-0 right-0 z-10 flex w-full justify-center c-space sm:bottom-2 lg:bottom-[-8px]'>
+      <div className='hero-cta absolute bottom-4 left-0 right-0 z-10 flex w-full justify-center c-space sm:bottom-2 lg:bottom-[-8px]'>
         <a href="#about" className='block w-full sm:w-auto'>
           <Button name='lets work together' isBeam containerClass='w-full max-w-sm px-4 text-sm sm:w-auto sm:min-w-[18rem] sm:px-6 sm:text-base md:min-w-[20rem] md:px-7 lg:min-w-[22rem] lg:px-8 lg:text-lg xl:min-w-[24rem]'/>
         </a>

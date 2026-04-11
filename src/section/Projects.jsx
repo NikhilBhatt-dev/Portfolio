@@ -35,6 +35,7 @@ const Projects = () => {
 
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [isSpotlightLoaded, setIsSpotlightLoaded] = useState(false);
+  const [displayedSpotlight, setDisplayedSpotlight] = useState(myProjects[0].spotlight);
   const [isModelReady, setIsModelReady] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
@@ -43,8 +44,20 @@ const Projects = () => {
   const isEcommerceProject = currentProject.title?.toLowerCase().includes('ecommerce');
 
   useEffect(() => {
-    setIsSpotlightLoaded(false);
-  }, [selectedProjectIndex]);
+    const nextSpotlight = currentProject.spotlight;
+
+    if (nextSpotlight === displayedSpotlight) {
+      setIsSpotlightLoaded(true);
+      return;
+    }
+
+    const preloadImage = new Image();
+    preloadImage.src = nextSpotlight;
+    preloadImage.onload = () => {
+      setDisplayedSpotlight(nextSpotlight);
+      setIsSpotlightLoaded(true);
+    };
+  }, [currentProject.spotlight, displayedSpotlight]);
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
@@ -64,17 +77,16 @@ const Projects = () => {
 
         <div className='project-details-card relative flex flex-col gap-5 px-5 py-8 shadow-2xl sm:p-10'>
 
-          <div className='absolute top-0 right-0'>
+          <div className='absolute top-0 right-0 left-0 sm:left-auto'>
             {!isSpotlightLoaded && (
               <div className='project-spotlight-skeleton'>
                 <SkeletonBlock className='h-full w-full rounded-xl' />
               </div>
             )}
             <img
-              src={currentProject.spotlight}
+              src={displayedSpotlight}
               alt='spotlight'
               className={`h-56 w-full rounded-xl object-cover transition-opacity duration-500 sm:h-80 lg:h-96 ${isSpotlightLoaded ? 'opacity-100' : 'opacity-0'}`}
-              onLoad={() => setIsSpotlightLoaded(true)}
             />
           </div>
 
@@ -90,7 +102,7 @@ const Projects = () => {
             />
           </div>
 
-          <div className='project-copy-block my-5 flex flex-col gap-5 text-white-600'>
+          <div className='project-copy-block my-5 flex flex-col gap-4 text-white-600 sm:gap-5'>
             <p className='animatedText text-xl font-semibold text-white sm:text-2xl'>
               {currentProject.title}
             </p>
@@ -105,7 +117,7 @@ const Projects = () => {
           </div>
 
           <div className='mt-auto flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between'>
-            <div className='flex flex-wrap items-center gap-3'>
+            <div className='flex flex-wrap items-center gap-3 max-sm:justify-center'>
               {currentProject.tags.map((tag, index) => (
                 <div key={index} className='tech-logo'>
                   <img src={tag.path} alt={tag.name} />
@@ -114,7 +126,7 @@ const Projects = () => {
             </div>
 
             <a
-              className='flex w-full items-center justify-end gap-2 text-white-600 sm:w-auto'
+              className='flex w-full items-center justify-center gap-2 text-white-600 sm:w-auto sm:justify-end'
               href={currentProject.href}
               target='_blank'
               rel='noreferrer'
@@ -124,7 +136,7 @@ const Projects = () => {
             </a>
           </div>
 
-          <div className='flex justify-between items-center mt-7'>
+          <div className='mt-7 flex items-center justify-between gap-4'>
             <button
               className='arrow-btn'
               onClick={() => handleNavigation('previous')}
@@ -146,7 +158,7 @@ const Projects = () => {
 
 
 
-        <div className='project-canvas-shell h-[320px] rounded-lg border border-black-300 bg-black-200 sm:h-96 md:h-[460px] lg:h-full'>
+        <div className='project-canvas-shell h-[280px] rounded-lg border border-black-300 bg-black-200 sm:h-96 md:h-[460px] lg:h-full'>
           {!isModelReady && <ProjectCanvasSkeleton />}
 
           <Canvas>

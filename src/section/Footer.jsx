@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer className="c-space flex flex-wrap items-center justify-center gap-5 border-t border-black-300 pb-4 pt-7 text-center sm:justify-between sm:text-left">
+        <footer className="c-space flex flex-col items-center gap-5 border-t border-black-300 pb-6 pt-7 text-center sm:flex-row sm:flex-wrap sm:justify-between sm:text-left">
             <div className="flex flex-wrap justify-center gap-2 text-white-500 sm:justify-start">
                 <p>Terms & Conditions</p>
                 <p>|</p>
@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <p className="w-full text-white-500 sm:w-auto">© 2026 Nikhil Bhatt. All rights reserved.</p>
+            <p className="w-full text-sm text-white-500 sm:w-auto sm:text-base">© 2026 Nikhil Bhatt. All rights reserved.</p>
         </footer>
     );
 };

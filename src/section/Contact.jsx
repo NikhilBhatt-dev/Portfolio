@@ -13,9 +13,9 @@ const Contact = () => {
     };
 
     return (
-        <section className="c-space my-20" id="contact">
+        <section className="c-space my-14 sm:my-20" id="contact">
 
-            <div className="relative min-h-screen flex items-center justify-center flex-col">
+            <div className="relative flex min-h-[auto] items-center justify-center py-4 sm:min-h-screen sm:flex-col">
 
                 <div className="contact-container">
 
@@ -24,7 +24,7 @@ const Contact = () => {
                     <form
                         action="https://formsubmit.co/6c1ae2dfdbb4d118510f1b0a5b39c298"
                         method="POST"
-                        className="mt-12 flex flex-col space-y-7"
+                        className="mt-8 flex flex-col space-y-6 sm:mt-12 sm:space-y-7"
                     >
 
                         <input type="hidden" name="_captcha" value="false" />

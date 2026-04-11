@@ -52,8 +52,8 @@ const Nav = () => {
         </div>
       </div>
 
-      <div className={`nav-sidebar ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
-      <nav className='p-5'>
+      <div className={`nav-sidebar ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
+      <nav className='c-space py-4'>
         <NavItems onItemClick={closeMenu} />
       </nav>
       </div>

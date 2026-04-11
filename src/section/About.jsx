@@ -59,7 +59,7 @@ const About = () => {
             <img
               src="/assets/grid.png"
               alt="grid-1"
-              className='h-fit w-full object-contain sm:h-[276px]'
+              className='mx-auto h-fit w-full max-w-xs object-contain sm:max-w-sm sm:h-[276px]'
             />
 
             <div>
@@ -83,7 +83,7 @@ const About = () => {
               
              
               alt="grid2"
-              className='mx-auto h-fit w-full object-contain sm:w-[276px]'
+              className='mx-auto h-fit w-full max-w-xs object-contain sm:w-[276px]'
             />
 
             <div>
@@ -98,7 +98,7 @@ const About = () => {
 
         <div className='lg:col-span-2 lg:row-span-2 flex flex-col gap-5'>
           <div className='grid-container'>
-            <div className='flex w-full items-center justify-center rounded-3xl' style={{ minHeight: globeSize }}>
+            <div className='flex w-full items-center justify-center overflow-hidden rounded-3xl' style={{ minHeight: globeSize }}>
               <GlobeErrorBoundary
                 fallback={
                   <div className='flex h-full w-full items-center justify-center text-sm text-white-600'>
@@ -150,14 +150,14 @@ const About = () => {
             </div>
           </div>
           <div className='grid-container justify-between lg:h-[290px]'>
-            <img src="/assets/grid4.png" alt="grid-4" className='h-[140px] w-full object-contain sm:h-[160px]' />
+            <img src="/assets/grid4.png" alt="grid-4" className='mx-auto h-[140px] w-full max-w-xs object-contain sm:h-[160px]' />
 
             <div className='space-y-3'>
               <p className='grid-subtext text-center'>
                 Contact me
               </p>
 
-              <div className='copy-container justify-center' onClick={handleCopy}>
+              <div className='copy-container flex-wrap justify-center' onClick={handleCopy}>
               <img src={hasCopied ? '/assets/tick.svg': '/assets/copy.svg'} alt="copy" />
                 <p className='text-center text-sm font-medium text-gray_gradient text-white break-all sm:text-base lg:text-xl'>bhattnikhil158@gmail.com</p>
 
@@ -169,7 +169,7 @@ const About = () => {
 
         <div className='lg:col-span-4'>
           <div className='grid-container'>
-            <img src="/assets/grid3.png" alt="grid3" className='h-fit w-full object-contain sm:h-[266px]' />
+            <img src="/assets/grid3.png" alt="grid3" className='mx-auto h-fit w-full max-w-md object-contain sm:h-[266px]' />
             <div>
               <p className='grid-headtext'>My Passion for coding</p>
               <p className='grid-subtext'>
