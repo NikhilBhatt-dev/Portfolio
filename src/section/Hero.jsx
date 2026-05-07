@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense, lazy, useEffect, useRef } from 'react'
 
 import {Canvas} from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
@@ -18,19 +18,89 @@ const HeroCanvasFallback = () => (
 
 
 const Hero = () => {
-
-
-
+  const sectionRef = useRef(null);
+  const cursorRef = useRef(null);
+  const pointerTargetRef = useRef({ x: 0, y: 0 });
+  const pointerCurrentRef = useRef({ x: 0, y: 0 });
+  const animationFrameRef = useRef(null);
 
   const isSmall = useMediaQuery({maxWidth: 440})
   const ismobile = useMediaQuery({maxWidth: 768})
   const isTablet = useMediaQuery({minWidth: 768, maxWidth: 1024})
 
+  useEffect(() => {
+    if (ismobile) return undefined;
+
+    const section = sectionRef.current;
+    const cursor = cursorRef.current;
+
+    if (!section || !cursor) return undefined;
+
+    const setCursorPosition = (x, y) => {
+      cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    };
+
+    const animateCursor = () => {
+      const current = pointerCurrentRef.current;
+      const target = pointerTargetRef.current;
+
+      current.x += (target.x - current.x) * 0.3;
+      current.y += (target.y - current.y) * 0.3;
+
+      setCursorPosition(current.x, current.y);
+      animationFrameRef.current = window.requestAnimationFrame(animateCursor);
+    };
+
+    const handlePointerEnter = (event) => {
+      const { clientX, clientY } = event;
+      pointerTargetRef.current = { x: clientX, y: clientY };
+      pointerCurrentRef.current = { x: clientX, y: clientY };
+      setCursorPosition(clientX, clientY);
+      section.classList.add('is-cursor-active');
+    };
+
+    const handlePointerMove = (event) => {
+      pointerTargetRef.current = { x: event.clientX, y: event.clientY };
+    };
+
+    const handlePointerLeave = () => {
+      section.classList.remove('is-cursor-active');
+    };
+
+    animationFrameRef.current = window.requestAnimationFrame(animateCursor);
+    section.addEventListener('pointerenter', handlePointerEnter);
+    section.addEventListener('pointermove', handlePointerMove);
+    section.addEventListener('pointerleave', handlePointerLeave);
+
+    return () => {
+      if (animationFrameRef.current) {
+        window.cancelAnimationFrame(animationFrameRef.current);
+      }
+
+      section.removeEventListener('pointerenter', handlePointerEnter);
+      section.removeEventListener('pointermove', handlePointerMove);
+      section.removeEventListener('pointerleave', handlePointerLeave);
+      section.classList.remove('is-cursor-active');
+    };
+  }, [ismobile]);
 
   calculateSizes(isSmall, ismobile, isTablet)
 
   return (
-    <section className='hero-section relative flex min-h-screen w-full flex-col overflow-x-clip' id='home'>
+    <section
+      ref={sectionRef}
+      className='hero-section relative flex min-h-screen w-full flex-col overflow-x-clip'
+      id='home'
+    >
+      {!ismobile && (
+        <div
+          ref={cursorRef}
+          className='hero-cursor-follower'
+          aria-hidden='true'
+        >
+          <div className='hero-cursor-core' />
+        </div>
+      )}
 
       <div className='hero-copy mx-auto mt-24 flex w-full flex-col gap-3 c-space sm:mt-32 lg:mt-36'>
 
@@ -100,8 +170,6 @@ const Hero = () => {
 }
 
 export default Hero
-
-
 
 
 

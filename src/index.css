@@ -152,6 +152,37 @@ body {
     @apply px-5 sm:px-10;
   }
 
+  .hero-cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    display: flex;
+    height: 1rem;
+    width: 1rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(-999px, -999px, 0) translate(-50%, -50%);
+    transition: opacity 180ms ease;
+    will-change: transform, opacity;
+  }
+
+  .hero-cursor-core {
+    height: 100%;
+    width: 100%;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #f8fafc 0%, #7dd3fc 100%);
+    box-shadow: 0 0 16px rgba(125, 211, 252, 0.5);
+  }
+
+  .hero-section.is-cursor-active .hero-cursor-follower {
+    opacity: 1;
+  }
+
   .project-canvas-skeleton {
     @apply absolute inset-0 z-10 flex flex-col items-center justify-center gap-5 bg-black-200/95 px-6;
   }
@@ -252,6 +283,10 @@ body {
 @media (max-width: 767px) {
   .hero-section {
     min-height: 43rem;
+  }
+
+  .hero-cursor-follower {
+    display: none;
   }
 
   .project-copy-block {
