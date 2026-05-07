@@ -97,6 +97,44 @@ export const myProjects = [
   },
 
   {
+    title: "Realtime Collaborative Code Editor",
+    desc: "A real-time collaborative code editor built for multi-user programming sessions, enabling near-instant shared editing, synchronized cursors, and smooth live collaboration in the browser.",
+    subdesc:
+      "Built with React, Monaco Editor, Node.js, Socket.IO, and Yjs, the application uses CRDT-based synchronization for conflict-free editing, awareness state for live presence tracking, and a WebSocket-driven architecture for fast updates. Containerized with a Docker multi-stage build for efficient deployment.",
+    href: "https://crdt-igt4.onrender.com/",
+    texture: "/textures/project/code-editor.mp4",
+    logo: "/assets/terminal.png",
+    logoStyle: {
+      backgroundColor: "#07111F",
+      border: "0.2px solid #16324F",
+      boxShadow: "0px 0px 60px 0px #38BDF84D",
+    },
+    spotlight: "/assets/spotlight4.png",
+    tags: [
+      {
+        id: 1,
+        name: "Monaco Editor",
+        path: "/assets/monaco-editor.svg",
+      },
+      {
+        id: 2,
+        name: "Socket.IO",
+        path: "/assets/socketio.svg",
+      },
+      {
+        id: 3,
+        name: "Yjs",
+        path: "/assets/yjs.svg",
+      },
+      {
+        id: 4,
+        name: "Docker",
+        path: "/assets/docker.svg",
+      },
+    ],
+  },
+
+  {
     title: "Music School Hindi – Modern Learning Platform",
     desc: "Music School Hindi is a modern, interactive web platform designed to showcase structured music education programs. It features smooth animations, responsive layouts, and an elegant UI to present courses, instructors, and enrollment flows in a clean and engaging format.",
     subdesc:

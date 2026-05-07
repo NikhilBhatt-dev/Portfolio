@@ -1,48 +1,78 @@
-import React, { Suspense, lazy, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { myProjects } from '../constants'
-import { Canvas } from '@react-three/fiber'
-import { Center, OrbitControls } from '@react-three/drei'
-import { useMediaQuery } from 'react-responsive';
-
-import CanvasLoader from '../components/CanvasLoader'
 const projectsCount = myProjects.length;
-const DemoComputer = lazy(() => import('../components/DemoComputer'));
 
 const SkeletonBlock = ({ className = '' }) => (
   <div className={`skeleton-shimmer rounded-xl ${className}`.trim()} aria-hidden='true' />
 );
 
-const ProjectCanvasSkeleton = () => (
-  <div className='project-canvas-skeleton' aria-hidden='true'>
-    <SkeletonBlock className='h-4 w-28 rounded-full' />
-    <SkeletonBlock className='h-36 w-36 rounded-[2rem] sm:h-44 sm:w-44' />
-    <div className='flex w-full max-w-xs justify-between gap-3'>
-      <SkeletonBlock className='h-3 flex-1 rounded-full' />
-      <SkeletonBlock className='h-3 w-16 rounded-full' />
-    </div>
-  </div>
-);
+const getProjectSceneKey = (title = '') => {
+  const normalizedTitle = title.toLowerCase();
 
-const ModelReadyTracker = ({ onReady }) => {
-  useEffect(() => {
-    onReady();
-  }, [onReady]);
+  if (normalizedTitle.includes('editor') || normalizedTitle.includes('collaborative')) return 'editor';
+  if (normalizedTitle.includes('nasa')) return 'nasa';
+  if (normalizedTitle.includes('music')) return 'music';
+  if (normalizedTitle.includes('snake')) return 'snake';
+  return 'ecommerce';
+};
 
-  return null;
+const sceneMetaMap = {
+  ecommerce: {
+    badge: 'Live shopping feel',
+    topChip: 'Sale',
+    bottomChip: 'Fast UI',
+    metric: '24/7',
+    metricLabel: 'Checkout flow',
+    panelTitle: 'Conversion stack',
+    panelItems: ['Cart UX', 'Stripe ready', 'Cloud sync'],
+  },
+  editor: {
+    badge: 'Realtime collab vibe',
+    topChip: 'Yjs',
+    bottomChip: 'Socket',
+    metric: '12',
+    metricLabel: 'Live peers',
+    panelTitle: 'Sync stack',
+    panelItems: ['CRDT', 'Presence', 'Docker build'],
+  },
+  nasa: {
+    badge: 'Research engine vibe',
+    topChip: 'ISS',
+    bottomChip: 'Lab',
+    metric: 'A-17',
+    metricLabel: 'Mission state',
+    panelTitle: 'Simulation nodes',
+    panelItems: ['Vitals', 'Orbit logs', 'Anomaly scan'],
+  },
+  music: {
+    badge: 'Creative learning vibe',
+    topChip: 'Rhythm',
+    bottomChip: 'Courses',
+    metric: '128',
+    metricLabel: 'BPM stream',
+    panelTitle: 'Learning stack',
+    panelItems: ['Lessons', 'Motion UI', 'Audio path'],
+  },
+  snake: {
+    badge: 'Retro arcade vibe',
+    topChip: 'Score',
+    bottomChip: 'Game loop',
+    metric: '03',
+    metricLabel: 'Lives left',
+    panelTitle: 'Core mechanics',
+    panelItems: ['Collision', 'Food spawn', 'High score'],
+  },
 };
 
 const Projects = () => {
-  const sectionRef = useRef(null);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [isSpotlightLoaded, setIsSpotlightLoaded] = useState(false);
   const [displayedSpotlight, setDisplayedSpotlight] = useState(myProjects[0].spotlight);
-  const [isModelReady, setIsModelReady] = useState(false);
-  const [shouldRenderModel, setShouldRenderModel] = useState(false);
-  const isMobile = useMediaQuery({ maxWidth: 768 });
-  const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
 
   const currentProject = myProjects[selectedProjectIndex];
   const isEcommerceProject = currentProject.title?.toLowerCase().includes('ecommerce');
+  const projectSceneKey = getProjectSceneKey(currentProject.title);
+  const sceneMeta = sceneMetaMap[projectSceneKey];
 
   useEffect(() => {
     const nextSpotlight = currentProject.spotlight;
@@ -60,26 +90,6 @@ const Projects = () => {
     };
   }, [currentProject.spotlight, displayedSpotlight]);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section || shouldRenderModel) return undefined;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-
-        setShouldRenderModel(true);
-        observer.disconnect();
-      },
-      { rootMargin: '300px 0px' },
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, [shouldRenderModel]);
-
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
       if (direction === 'previous') {
@@ -91,7 +101,7 @@ const Projects = () => {
   }
 
   return (
-    <section ref={sectionRef} className='c-space my-14 sm:my-20' id='work'>
+    <section className='c-space my-14 sm:my-20' id='work'>
       <p className='head-text'>My Work</p>
 
       <div className='mt-12 grid w-full grid-cols-1 gap-5 lg:grid-cols-2'>
@@ -179,24 +189,145 @@ const Projects = () => {
 
 
 
-        <div className='project-canvas-shell h-[280px] rounded-lg border border-black-300 bg-black-200 sm:h-96 md:h-[460px] lg:h-full'>
-          {!isModelReady && <ProjectCanvasSkeleton />}
+        <div className={`project-showcase-shell theme-${projectSceneKey} h-[280px] rounded-lg border border-black-300 bg-black-200 sm:h-96 md:h-[460px] lg:h-full`}>
+          <div className='project-showcase-backdrop' />
+          <div className='project-showcase-grid' />
+          <div className='project-showcase-glow' />
+          <div className='project-showcase-base' />
+          <div className='project-showcase-orbit project-showcase-orbit-one' />
+          <div className='project-showcase-orbit project-showcase-orbit-two' />
 
-          {shouldRenderModel && (
-            <Canvas>
-              <ambientLight intensity={Math.PI / 2} />
-              <directionalLight position={[10, 10, 5]} />
-              <Center>
-                <Suspense fallback={<CanvasLoader/>}>
-                  <group scale={isMobile ? 1.15 : isTablet ? 1.3 : 2.0} position={[0, isMobile ? -4 : -3, 0]} rotation={[0, -0.1, 0]}>
-                    <DemoComputer />
-                    <ModelReadyTracker onReady={() => setIsModelReady(true)} />
-                  </group>
-                </Suspense>
-              </Center>
-              <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
-            </Canvas>
-          )}
+          <div className='project-scene-badge'>{sceneMeta.badge}</div>
+
+          <div className='project-data-panel project-data-panel-right'>
+            <span className='project-panel-label'>Active metric</span>
+            <strong>{sceneMeta.metric}</strong>
+            <span className='project-panel-subtle'>{sceneMeta.metricLabel}</span>
+          </div>
+
+          <div className='project-data-panel project-data-panel-left'>
+            <span className='project-panel-label'>{sceneMeta.panelTitle}</span>
+            <ul className='project-panel-list'>
+              {sceneMeta.panelItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={`project-scene ${projectSceneKey === 'ecommerce' ? 'is-visible' : ''}`}>
+            <div className='project-holo-card holo-left'>
+              <span>Realtime</span>
+            </div>
+            <div className='project-holo-card holo-right'>
+              <span>Orders</span>
+            </div>
+            <div className='project-model-cart'>
+              <div className='project-cart-handle' />
+              <div className='project-cart-body' />
+              <div className='project-cart-frame' />
+              <div className='project-cart-bag bag-one' />
+              <div className='project-cart-bag bag-two' />
+              <div className='project-cart-wheel left' />
+              <div className='project-cart-wheel right' />
+            </div>
+            <div className='project-floating-chip top-right'>{sceneMeta.topChip}</div>
+            <div className='project-floating-chip bottom-left delay-chip'>{sceneMeta.bottomChip}</div>
+          </div>
+
+          <div className={`project-scene ${projectSceneKey === 'editor' ? 'is-visible' : ''}`}>
+            <div className='project-editor-presence presence-left'>
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className='project-editor-presence presence-right'>
+              <span />
+              <span />
+            </div>
+            <div className='project-model-editor'>
+              <div className='project-editor-window'>
+                <div className='project-editor-topbar'>
+                  <i />
+                  <i />
+                  <i />
+                  <span>collab-session.js</span>
+                </div>
+                <div className='project-editor-body'>
+                  <div className='project-editor-sidebar'>
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div className='project-editor-code'>
+                    <div className='project-code-line short'><span /></div>
+                    <div className='project-code-line med'><span /></div>
+                    <div className='project-code-line long active'><span /></div>
+                    <div className='project-code-line med'><span /></div>
+                    <div className='project-code-line short'><span /></div>
+                    <div className='project-code-line long'><span /></div>
+                    <div className='project-cursor cursor-one' />
+                    <div className='project-cursor cursor-two' />
+                    <div className='project-sync-wave wave-one' />
+                    <div className='project-sync-wave wave-two' />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='project-floating-chip top-right'>{sceneMeta.topChip}</div>
+            <div className='project-floating-chip bottom-left delay-chip'>{sceneMeta.bottomChip}</div>
+          </div>
+
+          <div className={`project-scene ${projectSceneKey === 'nasa' ? 'is-visible' : ''}`}>
+            <div className='project-star-cluster star-left' />
+            <div className='project-star-cluster star-right' />
+            <div className='project-model-planet'>
+              <div className='project-planet-core' />
+              <div className='project-planet-atmosphere' />
+              <div className='project-planet-ring' />
+              <div className='project-satellite' />
+            </div>
+            <div className='project-floating-chip top-right'>{sceneMeta.topChip}</div>
+            <div className='project-floating-chip bottom-left delay-chip'>{sceneMeta.bottomChip}</div>
+          </div>
+
+          <div className={`project-scene ${projectSceneKey === 'music' ? 'is-visible' : ''}`}>
+            <div className='project-wave-lines'>
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className='project-model-music'>
+              <div className='project-vinyl' />
+              <div className='project-vinyl-reflection' />
+              <div className='project-tonearm' />
+              <div className='project-equalizer'>
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+            <div className='project-floating-chip top-right'>{sceneMeta.topChip}</div>
+            <div className='project-floating-chip bottom-left delay-chip'>{sceneMeta.bottomChip}</div>
+          </div>
+
+          <div className={`project-scene ${projectSceneKey === 'snake' ? 'is-visible' : ''}`}>
+            <div className='project-arcade-panel'>
+              <span>Retro Mode</span>
+            </div>
+            <div className='project-model-snake'>
+              <div className='project-snake-grid' />
+              <div className='project-snake-body body-one head' />
+              <div className='project-snake-body body-two' />
+              <div className='project-snake-body body-three' />
+              <div className='project-snake-body body-four' />
+              <div className='project-snake-body body-five' />
+              <div className='project-snake-food' />
+            </div>
+            <div className='project-floating-chip top-right'>{sceneMeta.topChip}</div>
+            <div className='project-floating-chip bottom-left delay-chip'>{sceneMeta.bottomChip}</div>
+          </div>
         </div>
 
       </div>
