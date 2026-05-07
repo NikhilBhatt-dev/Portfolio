@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { myProjects } from '../constants'
 import { Canvas } from '@react-three/fiber'
 import { Center, OrbitControls } from '@react-three/drei'
@@ -32,11 +32,12 @@ const ModelReadyTracker = ({ onReady }) => {
 };
 
 const Projects = () => {
-
+  const sectionRef = useRef(null);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [isSpotlightLoaded, setIsSpotlightLoaded] = useState(false);
   const [displayedSpotlight, setDisplayedSpotlight] = useState(myProjects[0].spotlight);
   const [isModelReady, setIsModelReady] = useState(false);
+  const [shouldRenderModel, setShouldRenderModel] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
 
@@ -59,6 +60,26 @@ const Projects = () => {
     };
   }, [currentProject.spotlight, displayedSpotlight]);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || shouldRenderModel) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        setShouldRenderModel(true);
+        observer.disconnect();
+      },
+      { rootMargin: '300px 0px' },
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, [shouldRenderModel]);
+
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
       if (direction === 'previous') {
@@ -70,7 +91,7 @@ const Projects = () => {
   }
 
   return (
-    <section className='c-space my-14 sm:my-20' id='work'>
+    <section ref={sectionRef} className='c-space my-14 sm:my-20' id='work'>
       <p className='head-text'>My Work</p>
 
       <div className='mt-12 grid w-full grid-cols-1 gap-5 lg:grid-cols-2'>
@@ -161,25 +182,21 @@ const Projects = () => {
         <div className='project-canvas-shell h-[280px] rounded-lg border border-black-300 bg-black-200 sm:h-96 md:h-[460px] lg:h-full'>
           {!isModelReady && <ProjectCanvasSkeleton />}
 
-          <Canvas>
-            <ambientLight intensity={Math.PI / 2} />
-            <directionalLight position={[10, 10, 5]} />
-            <Center>
-
-              <Suspense fallback={<CanvasLoader/>}>
-                <group scale={isMobile ? 1.15 : isTablet ? 1.3 : 2.0} position={[0, isMobile ? -4 : -3, 0]} rotation={[0, -0.1, 0]}>
-
-                  <DemoComputer />
-                  <ModelReadyTracker onReady={() => setIsModelReady(true)} />
-
-
-                </group>
-              </Suspense>
-
-            </Center>
-            <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
-
-          </Canvas>
+          {shouldRenderModel && (
+            <Canvas>
+              <ambientLight intensity={Math.PI / 2} />
+              <directionalLight position={[10, 10, 5]} />
+              <Center>
+                <Suspense fallback={<CanvasLoader/>}>
+                  <group scale={isMobile ? 1.15 : isTablet ? 1.3 : 2.0} position={[0, isMobile ? -4 : -3, 0]} rotation={[0, -0.1, 0]}>
+                    <DemoComputer />
+                    <ModelReadyTracker onReady={() => setIsModelReady(true)} />
+                  </group>
+                </Suspense>
+              </Center>
+              <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
+            </Canvas>
+          )}
         </div>
 
       </div>

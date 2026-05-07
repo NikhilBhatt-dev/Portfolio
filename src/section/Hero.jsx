@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useRef } from 'react'
+import React, { Suspense, lazy, useEffect, useRef, useState } from 'react'
 
 import {Canvas} from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
@@ -23,6 +23,7 @@ const Hero = () => {
   const pointerTargetRef = useRef({ x: 0, y: 0 });
   const pointerCurrentRef = useRef({ x: 0, y: 0 });
   const animationFrameRef = useRef(null);
+  const [shouldRenderScene, setShouldRenderScene] = useState(false);
 
   const isSmall = useMediaQuery({maxWidth: 440})
   const ismobile = useMediaQuery({maxWidth: 768})
@@ -84,6 +85,68 @@ const Hero = () => {
     };
   }, [ismobile]);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || shouldRenderScene) return undefined;
+
+    let observer;
+    let idleCallbackId;
+    let timeoutId;
+    let hasIntersected = false;
+    let isPageReady = document.readyState === 'complete';
+
+    const scheduleSceneLoad = () => {
+      if (!hasIntersected || !isPageReady) return;
+
+      if ('requestIdleCallback' in window) {
+        idleCallbackId = window.requestIdleCallback(() => {
+          setShouldRenderScene(true);
+        }, { timeout: 1200 });
+        return;
+      }
+
+      timeoutId = window.setTimeout(() => {
+        setShouldRenderScene(true);
+      }, 250);
+    };
+
+    const handleWindowLoad = () => {
+      isPageReady = true;
+      scheduleSceneLoad();
+    };
+
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        hasIntersected = true;
+        scheduleSceneLoad();
+        observer.disconnect();
+      },
+      { rootMargin: '200px 0px' },
+    );
+
+    observer.observe(section);
+
+    if (!isPageReady) {
+      window.addEventListener('load', handleWindowLoad, { once: true });
+    }
+
+    return () => {
+      if (observer) observer.disconnect();
+      if (!isPageReady) {
+        window.removeEventListener('load', handleWindowLoad);
+      }
+      if (idleCallbackId && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleCallbackId);
+      }
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [shouldRenderScene]);
+
   calculateSizes(isSmall, ismobile, isTablet)
 
   return (
@@ -113,8 +176,7 @@ const Hero = () => {
       </div>
 
       <div className='hero-canvas-wrap absolute inset-x-0 top-24 bottom-28 mt-6 w-full sm:inset-x-6 sm:top-28 sm:bottom-24 lg:inset-x-10 lg:top-32 lg:bottom-16'>
-
-
+        {shouldRenderScene ? (
           <Suspense fallback={<HeroCanvasFallback />}>
             <Canvas
               className={`h-full w-full ${ismobile ? 'pointer-events-none' : 'pointer-events-auto'}`}
@@ -124,7 +186,6 @@ const Hero = () => {
               style={{ touchAction: ismobile ? 'pan-y' : 'auto' }}
             >
               <Suspense fallback={<CanvasLoader />}>
-
                 <PerspectiveCamera makeDefault fov={32} position={[0, 3, 22]} />
                 <OrbitControls
                   enabled={!ismobile}
@@ -154,9 +215,11 @@ const Hero = () => {
                 <directionalLight position={[-8, 6, 8]} intensity={1} color="#7dd3fc" />
                 <pointLight position={[0, 3, 10]} intensity={14} color="#f97316" distance={28} />
               </Suspense>
-
             </Canvas>
           </Suspense>
+        ) : (
+          <HeroCanvasFallback />
+        )}
 
       </div>
 
@@ -170,7 +233,6 @@ const Hero = () => {
 }
 
 export default Hero
-
 
 
 

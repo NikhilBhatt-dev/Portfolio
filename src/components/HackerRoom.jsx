@@ -154,6 +154,4 @@ const HackerRoom = (props) => {
   )
 }
 
-useGLTF.preload('/models/scene.glb')
-
 export default HackerRoom
