@@ -21,19 +21,6 @@ export const navLinks = [
   },
 ];
 
-export const words = [
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
-];
-
-
-
 export const myProjects = [
   {
     title: "E-Commerce Store – Full Stack Shopping Platform",
@@ -41,7 +28,6 @@ export const myProjects = [
     subdesc:
       "Built with React for the frontend and Node.js with Express for the backend, the platform uses MongoDB for data storage. Integrated with Stripe for secure payments and Cloudinary for optimized media handling. Implements lazy loading and skeleton UI to enhance performance, reduce load times, and improve perceived user experience. Designed with scalability, performance, and real-world production use in mind.",
     href: "https://e-com-frontend-mu-mauve.vercel.app/",
-    texture: "/textures/project/ecommerce.mp4",
 
     logo: "/assets/logo.png",
     logoStyle: {
@@ -85,7 +71,6 @@ export const myProjects = [
     subdesc:
       "Built as a unified monorepo using React + Vite with TypeScript, the platform combines modular simulation engines (physiology, ecosystems, mission generation, anomaly detection, security ledger, and replay systems) with immersive UI dashboards and 3D visualization labs. Designed with a scalable architecture, framework-agnostic engines, and extensible scenario modeling for ISS, Mars transit, and solar storm simulations.",
     href: "https://comforting-tiramisu-76c084.netlify.app/",
-    texture: "/textures/project/nasa-space-biology.mp4",
     logo: "/assets/project-logo-nasa.png",
     logoStyle: {
       backgroundColor: "#0A0F1F",
@@ -113,7 +98,6 @@ export const myProjects = [
     subdesc:
       "Built with React, Monaco Editor, Node.js, Socket.IO, and Yjs, the application uses CRDT-based synchronization for conflict-free editing, awareness state for live presence tracking, and a WebSocket-driven architecture for fast updates. Containerized with a Docker multi-stage build for efficient deployment.",
     href: "https://crdt-igt4.onrender.com/",
-    texture: "/textures/project/code-editor.mp4",
     logo: "/assets/terminal.png",
     logoStyle: {
       backgroundColor: "#07111F",
@@ -151,7 +135,6 @@ export const myProjects = [
     subdesc:
       "Built with Next.js 14 and TypeScript, the platform leverages Tailwind CSS for scalable styling and Framer Motion for fluid animations. Optimized for performance and SEO using Next.js App Router architecture, it delivers a fast, production-ready user experience.",
     href: "https://music-school-hindi-8d9qa2hd9-nikhil-bhatts-projects-216f008f.vercel.app/",
-    texture: "/textures/project/music-school.mp4",
     logo: "/assets/project-logo-music.png",
     logoStyle: {
       backgroundColor: "#1A0F2E",
@@ -185,7 +168,6 @@ export const myProjects = [
     subdesc:
       "Developed using HTML, CSS, and core JavaScript concepts, this project demonstrates DOM manipulation, array-based state management, collision detection, interval-driven game loops, and browser storage integration. Designed with modular game logic and responsive UI elements including Game Over modal and restart functionality.",
     href: "https://snakegame-3d.netlify.app/",
-    texture: "/textures/project/snake-game.mp4",
     logo: "/assets/project-logo-snake.png",
     logoStyle: {
       backgroundColor: "#0F172A",

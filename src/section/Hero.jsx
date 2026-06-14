@@ -9,7 +9,7 @@ import CanvasLoader from '../components/CanvasLoader'
 import HeroCamera from '../components/HeroCamera'
 import HeroModel from '../components/HeroModel'
 import StarsCanvas from '../components/StarsCanvas'
-import { calculateSizes, words } from '../constants'
+import { calculateSizes } from '../constants'
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 })
