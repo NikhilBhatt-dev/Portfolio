@@ -1044,10 +1044,36 @@ body {
 
   .hero-canvas-wrap {
     @apply overflow-hidden;
+    z-index: 1;
   }
 
   .hero-cta {
     @apply px-5 sm:px-10;
+    z-index: 10;
+  }
+
+  .hero-starfield-shell {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: auto;
+  }
+
+  .hero-starfield-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at center, rgba(4, 4, 6, 0) 0%, rgba(4, 4, 6, 0.16) 55%, rgba(4, 4, 6, 0.5) 100%),
+      linear-gradient(180deg, rgba(4, 4, 6, 0.18), rgba(4, 4, 6, 0.42));
+    pointer-events: none;
+  }
+
+  .hero-starfield-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .hero-cursor-follower {
@@ -1178,6 +1204,53 @@ body {
   animation: skeleton-wave 1.6s linear infinite;
 }
 
+.about {
+  max-width: 42rem;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.sliding-text {
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.sliding-text h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: clamp(1.6rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.slide {
+  position: relative;
+  display: inline-flex;
+  height: 3.5rem;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  animation: hero-word-slide 10s infinite;
+}
+
+.canvas-loader {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: #d5c7a3;
+  animation: canvas-spin 1s linear infinite;
+}
+
+.loader {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .hero-section {
     min-height: 43rem;
@@ -1237,6 +1310,15 @@ body {
     left: 1.25rem;
     bottom: 1.5rem;
   }
+
+  .sliding-text h1 {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .slide {
+    height: 2.9rem;
+  }
 }
 
 @keyframes wave-animation {
@@ -1280,6 +1362,53 @@ body {
 
   100% {
     background-position: -200% 0;
+  }
+}
+
+@keyframes hero-word-slide {
+  0%,
+  12% {
+    transform: translateY(0);
+  }
+
+  16%,
+  28% {
+    transform: translateY(-12.5%);
+  }
+
+  32%,
+  44% {
+    transform: translateY(-25%);
+  }
+
+  48%,
+  60% {
+    transform: translateY(-37.5%);
+  }
+
+  64%,
+  76% {
+    transform: translateY(-50%);
+  }
+
+  80%,
+  92% {
+    transform: translateY(-62.5%);
+  }
+
+  96%,
+  100% {
+    transform: translateY(-75%);
+  }
+}
+
+@keyframes canvas-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
 

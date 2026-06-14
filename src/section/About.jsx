@@ -57,8 +57,8 @@ const About = () => {
         <div className='lg:col-span-2'>
           <div className='grid-container'>
             <img
-              src="/assets/grid.png"
-              alt="grid-1"
+              src="/assets/avtar.png"
+              alt="Nikhil Bhatt profile illustration"
               className='mx-auto h-fit w-full max-w-xs object-contain sm:max-w-sm sm:h-[276px]'
             />
 
@@ -79,7 +79,7 @@ const About = () => {
         <div className='lg:col-span-2'>
           <div className="grid-container">
             <img
-              src="/assets/techstacks.png"
+              src="/assets/tech.png"
               
              
               alt="grid2"
@@ -146,14 +146,16 @@ const About = () => {
               <p className='grid-subtext'>
                 I'm based in India, with remote work available
               </p>
-              <Button name='Contact Me' isBeam containerClass='mt-8 w-full sm:mt-10 sm:w-fit sm:min-w-56' />
+              <div className='flex justify-center'>
+                <Button name='Contact Me' isBeam containerClass='mt-8 w-full sm:mt-10 sm:w-fit sm:min-w-56' />
+              </div>
             </div>
           </div>
           <div className='grid-container justify-between lg:h-[290px]'>
             <img src="/assets/grid4.png" alt="grid-4" className='mx-auto h-[140px] w-full max-w-xs object-contain sm:h-[160px]' />
 
             <div className='space-y-3'>
-              <p className='grid-subtext text-center'>
+              <p className='grid-subtext text-center '>
                 Contact me
               </p>
 
