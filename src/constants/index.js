@@ -33,8 +33,7 @@ export const myProjects = [
     subdesc:
       "Built with React.js, Node.js, Express.js, and MongoDB. Implemented JWT authentication, Stripe payments, RESTful APIs, centralized admin dashboard, Cloudinary media handling, Redux state management, and performance optimizations using lazy loading, code splitting, and skeleton loading.",
 
-    href: "https://e-com-frontend-mu-mauve.vercel.app/",
-
+    href: "https://e-mart-6rcu.onrender.com/",
     logo: "/assets/logo.png",
 
     logoStyle: {
