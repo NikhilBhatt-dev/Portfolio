@@ -26,9 +26,6 @@
 │   │   ├── 🖼️ nextjs.png
 │   │   ├── 🖼️ notion.svg
 │   │   ├── 🖼️ plogo.png
-│   │   ├── 🖼️ project-logo-music.png
-│   │   ├── 🖼️ project-logo-nasa.png
-│   │   ├── 🖼️ project-logo-snake.png
 │   │   ├── 🖼️ project-logo1.png
 │   │   ├── 🖼️ project-logo2.png
 │   │   ├── 🖼️ project-logo3.png
@@ -36,11 +33,8 @@
 │   │   ├── 🖼️ project-logo5.png
 │   │   ├── 🖼️ react.svg
 │   │   ├── 🖼️ right-arrow.png
-│   │   ├── 🖼️ spotlight1.png
 │   │   ├── 🖼️ spotlight2.png
-│   │   ├── 🖼️ spotlight3.png
 │   │   ├── 🖼️ spotlight4.png
-│   │   ├── 🖼️ spotlight5.png
 │   │   ├── 🖼️ star.png
 │   │   ├── 🖼️ tailwindcss.png
 │   │   ├── 🖼️ techstacks.png
@@ -68,11 +62,8 @@
 │   │   │   ├── 🖼️ monitor.png
 │   │   │   └── 🖼️ table.png
 │   │   ├── 📁 project
-│   │   │   ├── 🎬 project1.mp4
 │   │   │   ├── 🎬 project2.mp4
-│   │   │   ├── 🎬 project3.mp4
-│   │   │   ├── 🎬 project4.mp4
-│   │   │   └── 🎬 project5.mp4
+│   │   │   └── 🎬 project4.mp4
 │   │   ├── 🖼️ cube.png
 │   │   └── 🖼️ rings.png
 │   └── 🖼️ vite.svg

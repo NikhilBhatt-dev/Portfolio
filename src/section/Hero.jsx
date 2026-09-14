@@ -102,7 +102,7 @@ const Hero = () => {
             </a>
 
             <a
-              href=''
+              href='/assets/Cv.pdf'
               rel='noopener noreferrer'
               className='z-50 w-fit'
             >
@@ -110,6 +110,7 @@ const Hero = () => {
                 name='CV'
                 isBeam
                 containerClass='w-40 sm:min-w-40 sm:w-fit'
+               
               />
             </a>
           </div>
