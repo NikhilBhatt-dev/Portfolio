@@ -69,7 +69,7 @@ export const myProjects = [
         name: "Stripe",
         path: "/assets/stripe.png",
       },
-     
+
       {
         id: 7,
         name: "Redux",
@@ -94,7 +94,7 @@ export const myProjects = [
     subdesc:
       "Built with React.js, Monaco Editor, Node.js, Socket.IO, and Yjs. Implemented CRDT-based synchronization for conflict-free concurrent editing, Yjs awareness state for live user presence, WebSocket-driven real-time updates, and a Docker multi-stage build for deployment.",
 
-    href: "https://crdt-igt4.onrender.com/",
+    href: "https://crdt-8814.vercel.app/",
 
     logo: "/assets/terminal.png",
 
@@ -125,8 +125,7 @@ export const myProjects = [
       {
         id: 4,
         name: "Socket.IO",
-        path: "/assets/Socket.io.svg"
-      
+        path: "/assets/Socket.io.svg",
       },
       {
         id: 5,
