@@ -31,6 +31,34 @@ const Footer = () => {
                 <div className="social-icon">
                     <img src="/assets/instagram.svg" alt="instagram" className="w-1/2 h-1/2" />
                 </div>
+                <div className="social-icon">
+                    <a
+                        href="mailto:bhattnikhil158@gmail.com"
+                        aria-label="Email bhattnikhil158@gmail.com"
+                        className="flex h-full w-full items-center justify-center"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            className="h-1/2 w-1/2 text-white"
+                            aria-hidden="true"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 17.25V6.75Z"
+                            />
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="m3.75 6 8.25 6.75L20.25 6"
+                            />
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             <p className="w-full text-sm text-white-500 sm:w-auto sm:text-base">© 2026 Nikhil Bhatt. All rights reserved.</p>
