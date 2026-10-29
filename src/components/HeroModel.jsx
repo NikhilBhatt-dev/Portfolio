@@ -163,3 +163,5 @@ export default function HeroModel(props) {
 }
 
 useGLTF.preload('/models/cool_man.glb')
+
+ 

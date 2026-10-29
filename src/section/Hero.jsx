@@ -102,7 +102,7 @@ const Hero = () => {
             </a>
 
             <a
-              href='/assets/Cv.pdf'
+              href='/assets/CV-Nikhil_Bhatt.pdf'
               rel='noopener noreferrer'
               className='z-50 w-fit'
             >
